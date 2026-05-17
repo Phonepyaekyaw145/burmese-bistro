@@ -58,6 +58,20 @@ export const STATS = [
 // Replace each `image` URL with your own photo URL or imported asset
 export const SLIDES = [
   {
+    image: coconutnoodle,
+    tag: "National Dish",
+    title: "Ohn No Khao Swe",
+    subtitle:
+      "Coconut milk noodle soup with tender chicken — a comforting classic.",
+  },
+  {
+    image: ceylontea,
+    tag: "House Drinks",
+    title: "Ceylon Tea ",
+    subtitle:
+      "Pyit Pyit Nhit Nhit Ah Ya Thar (Myanmar milk tea) with rich flavor and creamy texture.",
+  },
+  {
     image: mohinga,
     tag: "National Dish",
     title: "Mohinga",
@@ -69,20 +83,6 @@ export const SLIDES = [
     title: "Shwe Yin Aye",
     subtitle:
       "Coconut milk dessert with jelly, sticky rice and colorful toppings",
-  },
-  {
-    image: ceylontea,
-    tag: "House Drinks",
-    title: "Ceylon Tea ",
-    subtitle:
-      "Pyit Pyit Nhit Nhit Ah Ya Thar (Myanmar milk tea) with rich flavor and creamy texture.",
-  },
-  {
-    image: coconutnoodle,
-    tag: "National Dish",
-    title: "Ohn No Khao Swe",
-    subtitle:
-      "Coconut milk noodle soup with tender chicken — a comforting classic.",
   },
   {
     image: sanwinmakin,
