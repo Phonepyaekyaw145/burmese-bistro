@@ -64,25 +64,31 @@ export const SLIDES = [
     subtitle: "Burma's beloved catfish noodle soup — warmth in every bowl.",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=900&q=80",
+    image: shweyinaye,
     tag: "Chef's Special",
-    title: "Burmese Curry",
-    subtitle: "Slow-cooked in turmeric, ginger and coconut milk.",
+    title: "Shwe Yin Aye",
+    subtitle:
+      "Coconut milk dessert with jelly, sticky rice and colorful toppings",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1559847844-5315695dadae?w=900&q=80",
+    image: ceylontea,
     tag: "House Drinks",
-    title: "Fresh & Crafted",
-    subtitle: "Sugarcane juice, avocado shakes & Myanmar green tea.",
+    title: "Ceylon Tea ",
+    subtitle:
+      "Pyit Pyit Nhit Nhit Ah Ya Thar (Myanmar milk tea) with rich flavor and creamy texture.",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=900&q=80",
-    tag: "Sweet Endings",
-    title: "Myanmar Desserts",
-    subtitle: "Mont Let Saung, Sanwin Makin & coconut sweets.",
+    image: coconutnoodle,
+    tag: "National Dish",
+    title: "Ohn No Khao Swe",
+    subtitle:
+      "Coconut milk noodle soup with tender chicken — a comforting classic.",
+  },
+  {
+    image: sanwinmakin,
+    tag: "Chef's Special",
+    title: "Sanwin Makin",
+    subtitle: "Traditional semolina cake baked with coconut and butter",
   },
 ];
 
