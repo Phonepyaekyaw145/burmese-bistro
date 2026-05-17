@@ -60,7 +60,7 @@ export default function SupportChat() {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch("/api?type=chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
