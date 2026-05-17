@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap");
+
+@import "tailwindcss";
+
+:root {
+  --br: #c0392b;
+  --brd: #962d22;
+  --bg: #faf7f2;
+  --bg2: #f2ece0;
+  --cd: #ffffff;
+  --tx: #1c1916;
+  --mt: #7a6f62;
+  --bo: #e5dbc8;
+  --ff: "Playfair Display", serif;
+  --fb: "DM Sans", sans-serif;
+}
+
+.dark {
+  --bg: #131110;
+  --bg2: #1d1a16;
+  --cd: #241f19;
+  --tx: #f0ebe2;
+  --mt: #9a8f7f;
+  --bo: #2e2820;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--fb);
+  background: var(--bg);
+  color: var(--tx);
+  transition:
+    background 0.3s,
+    color 0.3s;
+  margin: 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bo);
+  border-radius: 4px;
+}
+
+/* Make shadcn Carousel fill its parent height */
+[data-slot="carousel"] {
+  height: 100%;
+}
+[data-slot="carousel-content"] {
+  height: 100%;
+}
+[data-slot="carousel-item"] {
+  height: 100%;
+}
+
+/* Slide transition */
+.slide-enter {
+  opacity: 0;
+}
+.slide-enter-active {
+  opacity: 1;
+  transition: opacity 1s;
+}
+.slide-exit {
+  opacity: 1;
+}
+.slide-exit-active {
+  opacity: 0;
+  transition: opacity 1s;
+}
