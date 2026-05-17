@@ -2,7 +2,6 @@ import { useState, useRef } from "react";
 import { REVIEW_SAMPLES, REVIEW_SYSTEM_PROMPT } from "../../data/siteData";
 
 // Proxy server URL
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
 export default function ReviewForm() {
   const [stars, setStars] = useState(0);
@@ -31,7 +30,7 @@ export default function ReviewForm() {
     setLoading(true);
 
     try {
-      const res = await fetch(`${API_URL}/api/review`, {
+      const res = await fetch("/api?type=review", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
