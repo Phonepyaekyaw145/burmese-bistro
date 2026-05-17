@@ -2,9 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import { Send } from "lucide-react";
 import { SUPPORT_CHIPS, SUPPORT_SYSTEM_PROMPT } from "../../data/siteData";
 
-// Backend API URL
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
-
 const INITIAL_MSG = {
   role: "bot",
   text: "Hello! 👋 Welcome to Burmese Bistro support. Ask me anything about our menu, hours, delivery, or reservations!",
@@ -63,7 +60,7 @@ export default function SupportChat() {
     setLoading(true);
 
     try {
-      const res = await fetch(`${API_URL}/api/chat`, {
+      const res = await fetch("/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
