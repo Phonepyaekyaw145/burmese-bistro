@@ -9,7 +9,7 @@ import { CartProvider } from "./context/CartContext";
 import Header from "./components/layout/Header";
 import Sidebar from "./components/layout/Sidebar";
 import Footer from "./components/layout/Footer";
-import Sonner from "./components/ui/Sonner";
+import Sonner from "./components/ui/sonner";
 import HomePage from "./pages/HomePage";
 import MenuPage from "./pages/MenuPage";
 import ServicePage from "./pages/ServicePage";

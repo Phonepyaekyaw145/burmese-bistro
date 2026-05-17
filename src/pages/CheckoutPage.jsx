@@ -191,7 +191,7 @@ export default function CheckoutPage() {
                   </div>
 
                   <div className="text-xs mt-1" style={{ color: "var(--mt)" }}>
-                    KBZ Bank QR Payment
+                    BIDV Bank QR Payment
                   </div>
                 </button>
               </div>
