@@ -71,7 +71,7 @@ export default function CartPage() {
                       className="text-[11px] font-bold mt-0.5"
                       style={{ color: "var(--br)" }}
                     >
-                      ${product.price.toFixed(2)}
+                      {product.price.toFixed(0)} MMK
                     </div>
                     <div className="flex items-center gap-2 mt-1.5">
                       <button

@@ -2,6 +2,7 @@
   "name": "burmese-bistro",
   "private": true,
   "version": "1.0.0",
+  "homepage": "https://phonepyaekyaw145.github.io/burmese-bistro",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -25,6 +26,7 @@
     "@tailwindcss/vite": "^4.0.0",
     "@types/node": "^22.0.0",
     "@vitejs/plugin-react": "^4.3.0",
+    "gh-pages": "^6.3.0",
     "tailwindcss": "^4.0.0",
     "vite": "^6.0.0"
   }
