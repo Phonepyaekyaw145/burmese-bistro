@@ -71,7 +71,7 @@ export default function CheckoutPage() {
                   className="text-sm font-bold mt-2"
                   style={{ color: "var(--br)" }}
                 >
-                  ${(product.price * qty).toFixed(2)}
+                  {(product.price * qty).toFixed(0)} MMK
                 </div>
               </div>
             </div>
