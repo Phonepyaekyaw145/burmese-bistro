@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router";
-
-import shop from "../assets/images/shop.jpg";
+import cook1 from "../assets/images/cook1.jpg";
 import cook2 from "../assets/images/cook2.jpg";
 import cook3 from "../assets/images/cook3.jpg";
 
@@ -25,7 +24,7 @@ const milestones = [
 ];
 
 const IMAGES = {
-  hero: shop,
+  hero: cook1,
   side: cook2,
   bottom: cook3,
 };
@@ -34,139 +33,204 @@ export default function OurStoryPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col flex-1 overflow-y-auto bg-[#f8f5ef] dark:bg-[#17120d] transition-colors duration-500">
-      <div className="max-w-[920px] mx-auto w-full px-4 sm:px-6 md:px-9 py-7 pb-16">
-        {/* ========================================== */}
+    <div
+      className="flex flex-col flex-1 overflow-y-auto transition-colors duration-300"
+      style={{
+        background: "var(--panel)",
+        color: "var(--text)",
+      }}
+    >
+      <div className="max-w-[860px] mx-auto w-full px-4 sm:px-6 md:px-9 py-7 pb-16">
         {/* HERO */}
-        {/* ========================================== */}
-
-        <div className="relative w-full h-[260px] sm:h-[340px] md:h-[430px] rounded-[28px] overflow-hidden mb-10 shadow-2xl">
+        <div className="relative w-full h-[240px] sm:h-[300px] md:h-[380px] rounded-3xl overflow-hidden mb-8 md:mb-10 shadow-xl">
           <img
             src={IMAGES.hero}
-            alt="Burmese Bistro Story"
-            className="w-full h-full object-cover brightness-[0.58]"
+            alt="Burmese Bistro"
+            className="w-full h-full object-cover"
           />
 
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+          {/* overlay */}
+          <div className="absolute inset-0 bg-black/50" />
 
-          {/* Text */}
+          {/* text */}
           <div className="absolute bottom-0 left-0 p-6 sm:p-8 md:p-10">
-            <p className="text-[11px] tracking-[0.25em] uppercase text-amber-200 font-medium mb-3">
+            <p
+              className="text-[11px] tracking-[0.22em] uppercase mb-3 font-medium"
+              style={{
+                color: "var(--gold)",
+              }}
+            >
               Est. {YEAR_FOUNDED} · Yangon, Myanmar
             </p>
 
-            <h1 className="text-[42px] sm:text-[56px] md:text-[72px] leading-[1] font-bold text-white">
+            <h1
+              className="font-display text-[40px] sm:text-[56px] md:text-[70px] font-bold leading-none"
+              style={{
+                color: "#fff",
+              }}
+            >
               Our{" "}
-              <span className="italic text-amber-300 font-serif">Story</span>
+              <span
+                className="italic"
+                style={{
+                  color: "var(--gold)",
+                }}
+              >
+                Story
+              </span>
             </h1>
           </div>
         </div>
 
-        {/* ========================================== */}
         {/* QUOTE */}
-        {/* ========================================== */}
-
-        <blockquote className="border-l-4 border-amber-400 bg-white dark:bg-[#241b13] rounded-r-2xl px-6 py-5 mb-10 shadow-lg transition-colors duration-500">
-          <p className="text-[20px] sm:text-[24px] italic text-stone-700 dark:text-amber-100 leading-relaxed font-serif transition-colors duration-500">
+        <blockquote
+          className="border-l-4 rounded-r-2xl p-6 mb-8 shadow-sm"
+          style={{
+            background: "var(--card)",
+            borderColor: "var(--gold)",
+          }}
+        >
+          <p
+            className="font-display italic text-[22px] sm:text-[28px] leading-relaxed"
+            style={{
+              color: "var(--text)",
+            }}
+          >
             "What started with a single pot of Mohinga became a gathering place
             for an entire city."
           </p>
         </blockquote>
 
-        {/* ========================================== */}
         {/* STORY SECTION */}
-        {/* ========================================== */}
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mb-12">
-          {/* Text */}
-          <div className="space-y-5 text-[15px] leading-[1.9] text-stone-700 dark:text-stone-300 transition-colors duration-500">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mb-10">
+          {/* TEXT */}
+          <div
+            className="space-y-5 text-[15px] leading-relaxed"
+            style={{
+              color: "var(--muted)",
+            }}
+          >
             <p>
               Burmese Bistro began as a humble family street stall in Yangon,
               founded by Grandmother Aye in {YEAR_FOUNDED}. Every morning before
-              sunrise, she prepared her famous fish broth with lemongrass,
-              ginger, and recipes passed through generations.
+              sunrise, she prepared her famous fish broth using traditional
+              spices and recipes passed through generations.
             </p>
 
             <p>
-              Her tiny stall quickly became known across the city. Locals,
-              travellers, and food lovers gathered daily for warm bowls of
-              Mohinga cooked over charcoal fire.
+              Her small stall quickly became loved by locals, travellers, and
+              food lovers from all around the city. Even as Burmese Bistro grew,
+              the heart of the recipes never changed.
             </p>
 
             <p>
-              Even as Burmese Bistro grew into a restaurant, the family never
-              changed the heart of the recipes — preserving the warmth,
-              tradition, and hospitality that started everything.
+              Today, Burmese Bistro proudly carries the warmth of Myanmar
+              hospitality into a modern dining experience while preserving the
+              authentic flavours of home.
             </p>
           </div>
 
-          {/* Side Image */}
-          <div className="rounded-[26px] overflow-hidden min-h-[240px] shadow-xl border border-black/5 dark:border-white/10">
+          {/* IMAGE */}
+          <div className="rounded-3xl overflow-hidden min-h-[240px] shadow-lg">
             <img
               src={IMAGES.side}
-              alt="Traditional Burmese Dish"
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              alt="Traditional Burmese Food"
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
 
-        {/* ========================================== */}
         {/* DIVIDER */}
-        {/* ========================================== */}
-
-        <div className="flex items-center gap-4 my-10 text-amber-500 dark:text-amber-200 text-[11px] tracking-[0.22em] uppercase transition-colors duration-500">
-          <span className="flex-1 h-px bg-amber-300 dark:bg-amber-700/40" />
+        <div
+          className="flex items-center gap-4 my-10 text-[11px] tracking-[0.25em] uppercase"
+          style={{
+            color: "var(--muted)",
+          }}
+        >
+          <span
+            className="flex-1 h-px"
+            style={{
+              background: "var(--border)",
+            }}
+          />
           Three Generations
-          <span className="flex-1 h-px bg-amber-300 dark:bg-amber-700/40" />
+          <span
+            className="flex-1 h-px"
+            style={{
+              background: "var(--border)",
+            }}
+          />
         </div>
 
-        {/* ========================================== */}
-        {/* TIMELINE */}
-        {/* ========================================== */}
-
+        {/* MILESTONES */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-12">
           {milestones.map((m) => (
             <div
               key={m.year}
-              className="bg-white dark:bg-[#241b13] border border-amber-500/20 rounded-[24px] p-6 shadow-lg hover:-translate-y-1 transition-all duration-300"
+              className="rounded-3xl p-6 border transition-all duration-300 hover:-translate-y-1"
+              style={{
+                background: "var(--card)",
+                borderColor: "var(--border)",
+              }}
             >
-              <p className="text-[38px] font-bold text-amber-500 dark:text-amber-300 leading-none mb-2 transition-colors duration-500">
+              <p
+                className="font-display text-[36px] font-bold mb-2"
+                style={{
+                  color: "var(--gold)",
+                }}
+              >
                 {m.year}
               </p>
 
-              <p className="text-[14px] font-semibold text-stone-900 dark:text-white mb-2 transition-colors duration-500">
+              <p
+                className="text-[15px] font-semibold mb-2"
+                style={{
+                  color: "var(--text)",
+                }}
+              >
                 {m.label}
               </p>
 
-              <p className="text-[13px] text-stone-500 dark:text-stone-400 leading-relaxed transition-colors duration-500">
+              <p
+                className="text-[13px] leading-relaxed"
+                style={{
+                  color: "var(--muted)",
+                }}
+              >
                 {m.desc}
               </p>
             </div>
           ))}
         </div>
 
-        {/* ========================================== */}
         {/* BOTTOM SECTION */}
-        {/* ========================================== */}
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-7 items-center">
-          {/* Bottom Image */}
-          <div className="rounded-[26px] overflow-hidden h-[230px] md:h-[260px] shadow-xl border border-black/5 dark:border-white/10 order-2 md:order-1">
+          {/* IMAGE */}
+          <div className="rounded-3xl overflow-hidden h-[220px] shadow-lg order-2 md:order-1">
             <img
               src={IMAGES.bottom}
-              alt="Cooking Burmese Food"
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              alt="Cooking traditional Burmese dishes"
+              className="w-full h-full object-cover"
             />
           </div>
 
-          {/* Closing Text */}
+          {/* TEXT */}
           <div className="order-1 md:order-2">
-            <h3 className="text-[28px] sm:text-[34px] italic font-serif font-semibold text-amber-600 dark:text-amber-200 mb-4 leading-snug transition-colors duration-500">
+            <h3
+              className="font-display text-[30px] italic font-bold mb-4"
+              style={{
+                color: "var(--text)",
+              }}
+            >
               Food should bring people together.
             </h3>
 
-            <p className="text-[15px] leading-[1.9] text-stone-600 dark:text-stone-400 mb-6 transition-colors duration-500">
+            <p
+              className="text-[15px] leading-relaxed mb-6"
+              style={{
+                color: "var(--muted)",
+              }}
+            >
               Every dish we serve carries the warmth of Grandmother Aye's
               kitchen — prepared with care, cooked with heritage, and shared
               with everyone who walks through our doors.
@@ -174,7 +238,10 @@ export default function OurStoryPage() {
 
             <button
               onClick={() => navigate("/menu")}
-              className="px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 dark:bg-amber-400 dark:hover:bg-amber-300 text-black font-semibold tracking-wide uppercase text-[13px] transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer"
+              className="px-6 py-3 rounded-xl text-white text-[13px] uppercase tracking-wide font-semibold transition-all duration-300 hover:scale-105 cursor-pointer"
+              style={{
+                background: "var(--gold)",
+              }}
             >
               Explore Our Menu →
             </button>
