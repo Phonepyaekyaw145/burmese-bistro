@@ -194,7 +194,7 @@ Return ONLY valid JSON.
           summary: "Thank you for sharing your experience with Burmese Bistro.",
           ownerReply: `🙏 Thank you ${
             name || "guest"
-          }! We truly appreciate your feedback and hope to serve you again soon.`,
+          }! We truly appreciate your feedback and hope to serve you again soon. Have a wonderful day!`,
           ai: false,
           fallback: true,
         });
