@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import cook1 from "../assets/images/cook1.jpg";
+import shop from "../assets/images/shop.jpg";
 import cook2 from "../assets/images/cook2.jpg";
 import cook3 from "../assets/images/cook3.jpg";
 
@@ -24,7 +24,7 @@ const milestones = [
 ];
 
 const IMAGES = {
-  hero: cook1,
+  hero: shop,
   side: cook2,
   bottom: cook3,
 };
@@ -37,7 +37,6 @@ export default function OurStoryPage() {
       className="flex flex-col flex-1 overflow-y-auto transition-colors duration-300"
       style={{
         background: "var(--panel)",
-        color: "var(--text)",
       }}
     >
       <div className="max-w-[860px] mx-auto w-full px-4 sm:px-6 md:px-9 py-7 pb-16">
@@ -54,30 +53,12 @@ export default function OurStoryPage() {
 
           {/* text */}
           <div className="absolute bottom-0 left-0 p-6 sm:p-8 md:p-10">
-            <p
-              className="text-[11px] tracking-[0.22em] uppercase mb-3 font-medium"
-              style={{
-                color: "var(--gold)",
-              }}
-            >
+            <p className="text-[11px] tracking-[0.22em] uppercase text-gold-light font-body font-medium mb-3">
               Est. {YEAR_FOUNDED} · Yangon, Myanmar
             </p>
 
-            <h1
-              className="font-display text-[40px] sm:text-[56px] md:text-[70px] font-bold leading-none"
-              style={{
-                color: "#fff",
-              }}
-            >
-              Our{" "}
-              <span
-                className="italic"
-                style={{
-                  color: "var(--gold)",
-                }}
-              >
-                Story
-              </span>
+            <h1 className="font-display text-[40px] sm:text-[56px] md:text-[70px] font-bold text-white leading-none">
+              Our <span className="italic text-gold-light">Story</span>
             </h1>
           </div>
         </div>
@@ -90,12 +71,7 @@ export default function OurStoryPage() {
             borderColor: "var(--gold)",
           }}
         >
-          <p
-            className="font-display italic text-[22px] sm:text-[28px] leading-relaxed"
-            style={{
-              color: "var(--text)",
-            }}
-          >
+          <p className="font-display italic text-[22px] sm:text-[28px] leading-relaxed text-stone-700 dark:text-stone-200">
             "What started with a single pot of Mohinga became a gathering place
             for an entire city."
           </p>
@@ -104,12 +80,7 @@ export default function OurStoryPage() {
         {/* STORY SECTION */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mb-10">
           {/* TEXT */}
-          <div
-            className="space-y-5 text-[15px] leading-relaxed"
-            style={{
-              color: "var(--muted)",
-            }}
-          >
+          <div className="space-y-5 text-[15px] leading-relaxed text-stone-600 dark:text-stone-400">
             <p>
               Burmese Bistro began as a humble family street stall in Yangon,
               founded by Grandmother Aye in {YEAR_FOUNDED}. Every morning before
@@ -141,12 +112,7 @@ export default function OurStoryPage() {
         </div>
 
         {/* DIVIDER */}
-        <div
-          className="flex items-center gap-4 my-10 text-[11px] tracking-[0.25em] uppercase"
-          style={{
-            color: "var(--muted)",
-          }}
-        >
+        <div className="flex items-center gap-4 my-10 text-stone-400 dark:text-stone-600 text-[11px] tracking-[0.25em] uppercase">
           <span
             className="flex-1 h-px"
             style={{
@@ -173,30 +139,15 @@ export default function OurStoryPage() {
                 borderColor: "var(--border)",
               }}
             >
-              <p
-                className="font-display text-[36px] font-bold mb-2"
-                style={{
-                  color: "var(--gold)",
-                }}
-              >
+              <p className="font-display text-[36px] font-bold mb-2 text-gold">
                 {m.year}
               </p>
 
-              <p
-                className="text-[15px] font-semibold mb-2"
-                style={{
-                  color: "var(--text)",
-                }}
-              >
+              <p className="text-[15px] font-semibold mb-2 text-stone-800 dark:text-stone-100">
                 {m.label}
               </p>
 
-              <p
-                className="text-[13px] leading-relaxed"
-                style={{
-                  color: "var(--muted)",
-                }}
-              >
+              <p className="text-[13px] leading-relaxed text-stone-500 dark:text-stone-400">
                 {m.desc}
               </p>
             </div>
@@ -216,21 +167,11 @@ export default function OurStoryPage() {
 
           {/* TEXT */}
           <div className="order-1 md:order-2">
-            <h3
-              className="font-display text-[30px] italic font-bold mb-4"
-              style={{
-                color: "var(--text)",
-              }}
-            >
+            <h3 className="font-display text-[30px] italic font-bold mb-4 text-stone-800 dark:text-stone-100">
               Food should bring people together.
             </h3>
 
-            <p
-              className="text-[15px] leading-relaxed mb-6"
-              style={{
-                color: "var(--muted)",
-              }}
-            >
+            <p className="text-[15px] leading-relaxed mb-6 text-stone-500 dark:text-stone-400">
               Every dish we serve carries the warmth of Grandmother Aye's
               kitchen — prepared with care, cooked with heritage, and shared
               with everyone who walks through our doors.
@@ -238,10 +179,7 @@ export default function OurStoryPage() {
 
             <button
               onClick={() => navigate("/menu")}
-              className="px-6 py-3 rounded-xl text-white text-[13px] uppercase tracking-wide font-semibold transition-all duration-300 hover:scale-105 cursor-pointer"
-              style={{
-                background: "var(--gold)",
-              }}
+              className="px-6 py-3 rounded-xl text-white text-[13px] uppercase tracking-wide font-semibold transition-all duration-300 hover:scale-105 cursor-pointer bg-gold hover:bg-gold-dark"
             >
               Explore Our Menu →
             </button>
