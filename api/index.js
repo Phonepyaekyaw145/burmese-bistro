@@ -44,10 +44,12 @@ export default async function handler(req, res) {
 You are a helpful customer support AI for Burmese Bistro.
 
 Menu:
-- Mohinga $8.50
-- Shan Noodles $7.50
-- Tea Leaf Salad $6.50
-- Burmese Curry $11
+- Mohinga 25000 MMK
+- Shan Noodles 22000 MMK
+- Tea Leaf Salad 30000 MMK
+- Ohn No Khao Swe 25000 MMK
+- Samusa 8000 MMK
+- Myanmar Green Tea 15000 MMK
 
 Answer politely and briefly.
 
@@ -75,18 +77,22 @@ ${lastMessage}
         let reply =
           "🙏 Our AI assistant is currently busy. Please try again later.";
 
-        if (msg.includes("hour")) {
+        if (msg.includes("hours")) {
           reply = "🕒 Burmese Bistro is open daily from 10 AM to 9 PM.";
         } else if (msg.includes("delivery") || msg.includes("deliver")) {
           reply = "🚚 Yes! We offer delivery within the city area.";
         } else if (msg.includes("reservation") || msg.includes("book")) {
           reply =
             "📞 You can make a reservation by contacting Burmese Bistro directly.";
-        } else if (msg.includes("menu") || msg.includes("food")) {
+        } else if (
+          msg.includes("popular") ||
+          msg.includes("dishes") ||
+          msg.includes("Mohinga")
+        ) {
           reply =
             "🍜 Our popular dishes include Mohinga, Shan Noodles, Tea Leaf Salad, and Burmese Curry.";
         } else if (msg.includes("price")) {
-          reply = "💵 Most dishes range from $6.50 to $11.";
+          reply = "💵 Most dishes range from 8000 MMK to 30000 MMK.";
         } else if (msg.includes("hello") || msg.includes("hi")) {
           reply = "👋 Hello! Welcome to Burmese Bistro support.";
         }
