@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 
-import cook1 from "../assets/images/cook1.jpg";
+import shop from "../assets/images/shop.jpg";
 import cook2 from "../assets/images/cook2.jpg";
 import cook3 from "../assets/images/cook3.jpg";
 
@@ -25,7 +25,7 @@ const milestones = [
 ];
 
 const IMAGES = {
-  hero: cook1,
+  hero: shop,
   side: cook2,
   bottom: cook3,
 };
