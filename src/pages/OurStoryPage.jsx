@@ -1,17 +1,4 @@
-// OurStoryPage.jsx
-// Stack: React + Vite, Tailwind CSS, shadcn/ui, React Router
-//
-// Setup required:
-// 1. Add Google Fonts to index.html <head>:
-//    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-//
-// 2. Add custom color to tailwind.config.js:
-//    extend: { colors: { gold: { DEFAULT: '#c8922a', light: '#e8c98a', dark: '#9a6e1c' } } }
-//
-// 3. Add custom font to tailwind.config.js:
-//    extend: { fontFamily: { display: ['"Cormorant Garamond"', 'serif'], body: ['"DM Sans"', 'sans-serif'] } }
-
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const YEAR_FOUNDED = new Date().getFullYear() - 32;
 
