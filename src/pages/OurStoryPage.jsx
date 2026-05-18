@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+
 import cook1 from "../assets/images/cook1.jpg";
 import cook2 from "../assets/images/cook2.jpg";
 import cook3 from "../assets/images/cook3.jpg";
@@ -23,11 +24,6 @@ const milestones = [
   },
 ];
 
-// ==========================================
-// ADD YOUR OWN IMAGES INSIDE:
-// public/images/
-// ==========================================
-
 const IMAGES = {
   hero: cook1,
   side: cook2,
@@ -38,12 +34,7 @@ export default function OurStoryPage() {
   const navigate = useNavigate();
 
   return (
-    <div
-      className="flex flex-col flex-1 overflow-y-auto"
-      style={{
-        background: "linear-gradient(to bottom, #17120d, #1f1811, #17120d)",
-      }}
-    >
+    <div className="flex flex-col flex-1 overflow-y-auto bg-[#f8f5ef] dark:bg-[#17120d] transition-colors duration-500">
       <div className="max-w-[920px] mx-auto w-full px-4 sm:px-6 md:px-9 py-7 pb-16">
         {/* ========================================== */}
         {/* HERO */}
@@ -76,8 +67,8 @@ export default function OurStoryPage() {
         {/* QUOTE */}
         {/* ========================================== */}
 
-        <blockquote className="border-l-4 border-amber-400 bg-[#241b13] rounded-r-2xl px-6 py-5 mb-10 shadow-lg">
-          <p className="text-[20px] sm:text-[24px] italic text-amber-100 leading-relaxed font-serif">
+        <blockquote className="border-l-4 border-amber-400 bg-white dark:bg-[#241b13] rounded-r-2xl px-6 py-5 mb-10 shadow-lg transition-colors duration-500">
+          <p className="text-[20px] sm:text-[24px] italic text-stone-700 dark:text-amber-100 leading-relaxed font-serif transition-colors duration-500">
             "What started with a single pot of Mohinga became a gathering place
             for an entire city."
           </p>
@@ -89,7 +80,7 @@ export default function OurStoryPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mb-12">
           {/* Text */}
-          <div className="space-y-5 text-[15px] leading-[1.9] text-stone-300">
+          <div className="space-y-5 text-[15px] leading-[1.9] text-stone-700 dark:text-stone-300 transition-colors duration-500">
             <p>
               Burmese Bistro began as a humble family street stall in Yangon,
               founded by Grandmother Aye in {YEAR_FOUNDED}. Every morning before
@@ -110,8 +101,8 @@ export default function OurStoryPage() {
             </p>
           </div>
 
-          {/* Image */}
-          <div className="rounded-[26px] overflow-hidden min-h-[240px] shadow-xl border border-white/10">
+          {/* Side Image */}
+          <div className="rounded-[26px] overflow-hidden min-h-[240px] shadow-xl border border-black/5 dark:border-white/10">
             <img
               src={IMAGES.side}
               alt="Traditional Burmese Dish"
@@ -124,10 +115,10 @@ export default function OurStoryPage() {
         {/* DIVIDER */}
         {/* ========================================== */}
 
-        <div className="flex items-center gap-4 my-10 text-amber-200 text-[11px] tracking-[0.22em] uppercase">
-          <span className="flex-1 h-px bg-amber-700/40" />
+        <div className="flex items-center gap-4 my-10 text-amber-500 dark:text-amber-200 text-[11px] tracking-[0.22em] uppercase transition-colors duration-500">
+          <span className="flex-1 h-px bg-amber-300 dark:bg-amber-700/40" />
           Three Generations
-          <span className="flex-1 h-px bg-amber-700/40" />
+          <span className="flex-1 h-px bg-amber-300 dark:bg-amber-700/40" />
         </div>
 
         {/* ========================================== */}
@@ -138,17 +129,17 @@ export default function OurStoryPage() {
           {milestones.map((m) => (
             <div
               key={m.year}
-              className="bg-[#241b13] border border-amber-500/20 rounded-[24px] p-6 shadow-lg hover:-translate-y-1 transition-transform duration-300"
+              className="bg-white dark:bg-[#241b13] border border-amber-500/20 rounded-[24px] p-6 shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
-              <p className="text-[38px] font-bold text-amber-300 leading-none mb-2">
+              <p className="text-[38px] font-bold text-amber-500 dark:text-amber-300 leading-none mb-2 transition-colors duration-500">
                 {m.year}
               </p>
 
-              <p className="text-[14px] font-semibold text-white mb-2">
+              <p className="text-[14px] font-semibold text-stone-900 dark:text-white mb-2 transition-colors duration-500">
                 {m.label}
               </p>
 
-              <p className="text-[13px] text-stone-400 leading-relaxed">
+              <p className="text-[13px] text-stone-500 dark:text-stone-400 leading-relaxed transition-colors duration-500">
                 {m.desc}
               </p>
             </div>
@@ -160,8 +151,8 @@ export default function OurStoryPage() {
         {/* ========================================== */}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-7 items-center">
-          {/* Image */}
-          <div className="rounded-[26px] overflow-hidden h-[230px] md:h-[260px] shadow-xl border border-white/10 order-2 md:order-1">
+          {/* Bottom Image */}
+          <div className="rounded-[26px] overflow-hidden h-[230px] md:h-[260px] shadow-xl border border-black/5 dark:border-white/10 order-2 md:order-1">
             <img
               src={IMAGES.bottom}
               alt="Cooking Burmese Food"
@@ -169,13 +160,13 @@ export default function OurStoryPage() {
             />
           </div>
 
-          {/* Text */}
+          {/* Closing Text */}
           <div className="order-1 md:order-2">
-            <h3 className="text-[28px] sm:text-[34px] italic font-serif font-semibold text-amber-200 mb-4 leading-snug">
+            <h3 className="text-[28px] sm:text-[34px] italic font-serif font-semibold text-amber-600 dark:text-amber-200 mb-4 leading-snug transition-colors duration-500">
               Food should bring people together.
             </h3>
 
-            <p className="text-[15px] leading-[1.9] text-stone-400 mb-6">
+            <p className="text-[15px] leading-[1.9] text-stone-600 dark:text-stone-400 mb-6 transition-colors duration-500">
               Every dish we serve carries the warmth of Grandmother Aye's
               kitchen — prepared with care, cooked with heritage, and shared
               with everyone who walks through our doors.
@@ -183,7 +174,7 @@ export default function OurStoryPage() {
 
             <button
               onClick={() => navigate("/menu")}
-              className="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-black font-semibold tracking-wide uppercase text-[13px] transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer"
+              className="px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 dark:bg-amber-400 dark:hover:bg-amber-300 text-black font-semibold tracking-wide uppercase text-[13px] transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer"
             >
               Explore Our Menu →
             </button>
