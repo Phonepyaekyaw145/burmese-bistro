@@ -52,57 +52,88 @@ export default function AboutPage() {
             </div>
           </div>
         </Link>
-
-        {/* Feature grid */}
+        {/* Feature Grid */}
         <div
-          className="grid gap-3"
-          style={{ gridTemplateColumns: "repeat(auto-fill,minmax(200px,1fr))" }}
+          className="grid gap-4"
+          style={{
+            gridTemplateColumns: "repeat(auto-fill,minmax(220px,1fr))",
+          }}
         >
           {ABOUT_FEATURES.map((f) => {
             const Icon = ICONS[f.icon];
-            return (
+
+            const Card = (
               <div
-                key={f.title}
-                className="rounded-xl p-3.5 border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-black/10 hover:border-[var(--br)]/40"
-                style={{ background: "var(--cd)", borderColor: "var(--bo)" }}
+                className="
+          rounded-2xl p-4 border
+          transition-all duration-300
+          hover:-translate-y-1
+          hover:shadow-xl
+          hover:border-[var(--br)]/40
+          group
+          h-full
+        "
+                style={{
+                  background: "var(--cd)",
+                  borderColor: "var(--bo)",
+                }}
               >
+                {/* Icon */}
                 {Icon && (
-                  <Icon
-                    size={20}
-                    className="mb-1.5"
-                    style={{ color: "var(--br)" }}
-                  />
+                  <div
+                    className="
+              w-10 h-10 rounded-xl
+              flex items-center justify-center
+              mb-3
+              transition-all duration-300
+              group-hover:scale-110
+            "
+                    style={{
+                      background: "var(--bg2)",
+                    }}
+                  >
+                    <Icon size={20} style={{ color: "var(--br)" }} />
+                  </div>
                 )}
+
+                {/* Title */}
                 <div
-                  className="text-[13px] font-semibold mb-1"
+                  className="text-[14px] font-semibold mb-1.5"
                   style={{ color: "var(--tx)" }}
                 >
                   {f.title}
                 </div>
+
+                {/* Description */}
                 {f.desc && (
                   <div
-                    className="text-[11px] leading-relaxed"
+                    className="text-[12px] leading-relaxed"
                     style={{ color: "var(--mt)" }}
                   >
                     {f.desc}
                   </div>
                 )}
+
+                {/* Hours */}
                 {f.hours && (
-                  <div className="grid grid-cols-2 gap-1.5 mt-1">
+                  <div className="grid grid-cols-2 gap-2 mt-3">
                     {f.hours.map((h) => (
                       <div
                         key={h.day}
-                        className="rounded-lg px-2.5 py-1.5"
-                        style={{ background: "var(--bg2)" }}
+                        className="rounded-xl px-3 py-2"
+                        style={{
+                          background: "var(--bg2)",
+                        }}
                       >
                         <div
-                          className="text-[9px]"
+                          className="text-[9px] uppercase tracking-wide"
                           style={{ color: "var(--mt)" }}
                         >
                           {h.day}
                         </div>
+
                         <div
-                          className="text-[10px] font-semibold mt-0.5"
+                          className="text-[11px] font-semibold mt-0.5"
                           style={{ color: "var(--tx)" }}
                         >
                           {h.time}
@@ -112,6 +143,14 @@ export default function AboutPage() {
                   </div>
                 )}
               </div>
+            );
+
+            return f.link ? (
+              <Link key={f.title} to={f.link} className="block">
+                {Card}
+              </Link>
+            ) : (
+              <div key={f.title}>{Card}</div>
             );
           })}
         </div>

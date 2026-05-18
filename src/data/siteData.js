@@ -474,6 +474,7 @@ export const ABOUT_FEATURES = [
     icon: "Heart",
     title: "Our Story",
     desc: "Founded by Grandmother Aye in 1992 with a single pot of Mohinga. Today her grandchildren serve the same recipes.",
+    link: "/our-story",
   },
   {
     icon: "Leaf",

@@ -24,6 +24,7 @@ import HomeDeliveryPage from "./pages/HomeDeliveryPage";
 import PrivateDiningPage from "./pages/PrivateDiningPage";
 import CateringServicePage from "./pages/CateringServicePage";
 import LoyaltyRewardsPage from "./pages/LoyaltyRewardsPage";
+import OurStoryPage from "./pages/OurStoryPage";
 function AppShell() {
   const location = useLocation();
   window.addEventListener("beforeunload", () => {
@@ -96,6 +97,7 @@ function AppShell() {
                 path="/services/loyalty-rewards"
                 element={<LoyaltyRewardsPage />}
               />
+              <Route path="/our-story" element={<OurStoryPage />} />
             </Routes>
           </div>
 
