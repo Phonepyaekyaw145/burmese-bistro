@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { motion, useInView } from "framer-motion";
 import { BRAND } from "../data/siteData";
@@ -100,6 +100,35 @@ export default function QRTableOrderingPage() {
   const guest = JSON.parse(sessionStorage.getItem("guest") || "{}");
 
   const tableName = guest.table || "C07";
+  const saveGuestToDB = async (guestData) => {
+    try {
+      const res = await fetch("/api/auth", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(guestData),
+      });
+
+      const data = await res.json();
+
+      if (!data.success) {
+        throw new Error(data.error || "API failed");
+      }
+
+      return data;
+    } catch (err) {
+      console.log("Backend failed, using local only", err);
+      return null;
+    }
+  };
+  useEffect(() => {
+    const guest = JSON.parse(sessionStorage.getItem("guest") || "{}");
+
+    if (guest.name) {
+      saveGuestToDB(guest);
+    }
+  }, []);
   return (
     <div
       className="flex flex-col flex-1 overflow-y-auto font-body transition-colors duration-300"
@@ -133,7 +162,10 @@ export default function QRTableOrderingPage() {
             <p className="text-[11px] tracking-[0.22em] uppercase text-gold font-body font-medium mb-2">
               {BRAND.name} · Scan & Order
             </p>
-            <h1 className="font-display text-[36px] sm:text-[50px] md:text-[60px] font-semibold text-white leading-[1.02]">
+            <h1
+              className="mt-2 text-[13px] font-body"
+              style={{ color: "var(--muted)" }}
+            >
               QR Table <em className="italic text-gold-light">Ordering</em>
             </h1>
             <p className="mt-2 text-[13px] text-white/65 font-body max-w-[440px] leading-relaxed">
@@ -180,7 +212,7 @@ export default function QRTableOrderingPage() {
                 {/* Table number badge */}
                 <div className="mt-4 text-center">
                   <p
-                    className="font-display text-[26px] font-semibold leading-none"
+                    className="font-display text-[26px] font-semibold"
                     style={{ color: "var(--text)" }}
                   >
                     Table
@@ -213,10 +245,16 @@ export default function QRTableOrderingPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
-                  onClick={() => navigate("/menu")}
+                  onClick={() => {
+                    sessionStorage.setItem(
+                      "pendingTable",
+                      JSON.stringify({ table: tableName }),
+                    );
+                    navigate("/auth");
+                  }}
                   className="px-5 py-2.5 bg-gold hover:bg-gold-dark text-white text-[13px] font-medium font-body tracking-wide rounded-xl transition-colors duration-200"
                 >
-                  Browse Menu
+                  Start Ordering
                 </button>
                 <button
                   onClick={() => navigate("/support")}
