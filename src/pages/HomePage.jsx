@@ -263,7 +263,10 @@ function WhyUsStrip() {
   return (
     <section
       ref={ref}
-      className="relative py-12 md:py-16 overflow-hidden bg-stone-50 dark:bg-stone-900"
+      className="relative py-12 md:py-16 overflow-hidden transition-colors duration-300"
+      style={{
+        background: "var(--cd)",
+      }}
     >
       {/* Decorative line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
@@ -279,10 +282,16 @@ function WhyUsStrip() {
               className="flex flex-col items-center text-center"
             >
               <span className="text-[32px] mb-3">{p.icon}</span>
-              <p className="font-display text-[17px] font-semibold text-stone-800 dark:text-stone-200 mb-1">
+              <p
+                className="font-display text-[17px] font-semibold mb-1 transition-colors duration-300"
+                style={{ color: "var(--tx)" }}
+              >
                 {p.title}
               </p>
-              <p className="text-[12px] text-stone-500 dark:text-stone-400 font-body">
+              <p
+                className="text-[12px] font-body transition-colors duration-300"
+                style={{ color: "var(--mt)" }}
+              >
                 {p.desc}
               </p>
             </motion.div>
