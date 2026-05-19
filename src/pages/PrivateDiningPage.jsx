@@ -87,38 +87,46 @@ const PACKAGES = [
 const FAQS = [
   {
     q: "How far in advance should I book?",
-    a: "We recommend booking at least 2 weeks in advance for smaller parties, and 4–6 weeks for larger events. For peak dates (weekends, public holidays) please book as early as possible.",
+    a: "We recommend booking at least 2 weeks in advance for smaller parties, and 4–6 weeks for larger events.",
   },
   {
     q: "Can I bring my own cake or decorations?",
-    a: "Absolutely. You're welcome to bring your own cake — we'll store and serve it for you at no extra charge. For décor, please let us know in advance so we can coordinate setup.",
+    a: "Absolutely. You're welcome to bring your own cake and decorations.",
   },
   {
     q: "Do you accommodate dietary requirements?",
-    a: "Yes. We cater for vegetarian, vegan, gluten-free, and halal requirements. Please inform us when booking so our kitchen can prepare accordingly.",
+    a: "Yes. We cater for vegetarian, vegan, gluten-free, and halal requirements.",
   },
   {
     q: "Is a deposit required?",
-    a: "A 30% deposit is required to confirm your booking. The remainder is settled on the day of your event.",
+    a: "A 30% deposit is required to confirm your booking.",
   },
   {
     q: "Can I customise the menu?",
-    a: "Yes — especially for the Signature and Grand packages. Our chef will consult with you to create a personalised menu that reflects your preferences.",
+    a: "Yes — especially for Signature and Grand packages.",
   },
 ];
 
-// ── Sub-components ────────────────────────────────────────────────────────
+// ── Components ────────────────────────────────────────────────────────────
 
 function FadeUp({ children, delay = 0, className = "" }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+
+  const inView = useInView(ref, {
+    once: true,
+    margin: "-60px",
+  });
 
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 32 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: 0.6,
+        delay,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className={className}
     >
       {children}
@@ -129,8 +137,9 @@ function FadeUp({ children, delay = 0, className = "" }) {
 function SectionLabel({ children }) {
   return (
     <div className="flex items-center gap-3 mb-3">
-      <span className="h-px w-8 bg-gold" />
-      <p className="text-[11px] tracking-[0.22em] uppercase text-gold font-body font-medium">
+      <span className="h-px w-8 bg-[var(--br)]" />
+
+      <p className="text-[11px] tracking-[0.22em] uppercase text-[var(--br)] font-medium">
         {children}
       </p>
     </div>
@@ -139,7 +148,11 @@ function SectionLabel({ children }) {
 
 function OccasionCard({ item, index }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
+
+  const inView = useInView(ref, {
+    once: true,
+    margin: "-40px",
+  });
 
   return (
     <motion.div
@@ -151,10 +164,10 @@ function OccasionCard({ item, index }) {
         delay: index * 0.07,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group flex flex-col gap-3 p-5 rounded-2xl border transition-all duration-300 hover:shadow-lg"
+      className="group flex flex-col gap-3 p-5 rounded-3xl border transition-all duration-300 hover:shadow-xl"
       style={{
-        borderColor: "var(--border)",
         background: "var(--card)",
+        borderColor: "var(--bo)",
       }}
     >
       <span className="text-[30px]">{item.icon}</span>
@@ -167,7 +180,7 @@ function OccasionCard({ item, index }) {
       </h3>
 
       <p
-        className="text-[13px] leading-relaxed font-body"
+        className="text-[13px] leading-relaxed"
         style={{ color: "var(--muted)" }}
       >
         {item.desc}
@@ -178,7 +191,11 @@ function OccasionCard({ item, index }) {
 
 function PackageCard({ pkg, index }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
+
+  const inView = useInView(ref, {
+    once: true,
+    margin: "-40px",
+  });
 
   return (
     <motion.div
@@ -190,45 +207,50 @@ function PackageCard({ pkg, index }) {
         delay: index * 0.1,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="relative flex flex-col rounded-2xl p-6 border transition-all duration-300"
+      className={`relative flex flex-col rounded-3xl p-6 border transition-all duration-300 ${
+        pkg.highlight ? "shadow-2xl" : "hover:shadow-lg"
+      }`}
       style={{
-        background: pkg.highlight ? "var(--gold)" : "var(--card)",
-        borderColor: pkg.highlight ? "var(--gold)" : "var(--border)",
-        color: pkg.highlight ? "#ffffff" : "var(--text)",
+        background: pkg.highlight ? "var(--br)" : "var(--card)",
+        borderColor: pkg.highlight ? "var(--br)" : "var(--bo)",
       }}
     >
       {pkg.highlight && (
-        <span
-          className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-semibold font-body tracking-widest uppercase px-3 py-1 rounded-full"
-          style={{
-            background: "var(--text)",
-            color: "var(--bg)",
-          }}
-        >
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--text)] text-[var(--bg)] text-[10px] font-semibold tracking-widest uppercase px-3 py-1 rounded-full">
           Most Popular
         </span>
       )}
 
-      <p className="font-display text-[28px] font-semibold mb-0.5">
+      <h3
+        className="font-display text-[30px] font-semibold mb-1"
+        style={{
+          color: pkg.highlight ? "#ffffff" : "var(--text)",
+        }}
+      >
         {pkg.name}
-      </p>
+      </h3>
 
       <p
-        className="text-[12px] font-body mb-4"
+        className="text-[12px] mb-4"
         style={{
-          color: pkg.highlight ? "rgba(255,255,255,0.8)" : "var(--muted)",
+          color: pkg.highlight ? "rgba(255,255,255,0.75)" : "var(--muted)",
         }}
       >
         {pkg.guests} guests
       </p>
 
       <div className="flex items-end gap-1 mb-6">
-        <span className="font-display text-[38px] font-semibold leading-none">
+        <span
+          className="font-display text-[38px] font-semibold leading-none"
+          style={{
+            color: pkg.highlight ? "#ffffff" : "var(--text)",
+          }}
+        >
           {pkg.price}
         </span>
 
         <span
-          className="text-[12px] font-body mb-1.5"
+          className="text-[12px] mb-1"
           style={{
             color: pkg.highlight ? "rgba(255,255,255,0.7)" : "var(--muted)",
           }}
@@ -243,16 +265,18 @@ function PackageCard({ pkg, index }) {
             <span
               className="mt-0.5 text-[13px]"
               style={{
-                color: pkg.highlight ? "#ffffff" : "var(--gold)",
+                color: pkg.highlight ? "#ffffff" : "var(--br)",
               }}
             >
               ✓
             </span>
 
             <span
-              className="text-[13px] font-body leading-snug"
+              className="text-[13px] leading-snug"
               style={{
-                color: pkg.highlight ? "rgba(255,255,255,0.9)" : "var(--muted)",
+                color: pkg.highlight
+                  ? "rgba(255,255,255,0.88)"
+                  : "var(--muted)",
               }}
             >
               {perk}
@@ -262,10 +286,10 @@ function PackageCard({ pkg, index }) {
       </ul>
 
       <button
-        className="w-full py-2.5 rounded-xl text-[13px] font-medium font-body tracking-wide transition-all duration-200"
+        className="w-full py-3 rounded-xl text-[13px] font-medium transition-all duration-200"
         style={{
-          background: pkg.highlight ? "#ffffff" : "var(--gold)",
-          color: pkg.highlight ? "var(--gold)" : "#ffffff",
+          background: pkg.highlight ? "#ffffff" : "var(--br)",
+          color: pkg.highlight ? "var(--br)" : "#ffffff",
         }}
       >
         Book This Package
@@ -278,13 +302,13 @@ function FaqItem({ item }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-b" style={{ borderColor: "var(--border)" }}>
+    <div className="border-b" style={{ borderColor: "var(--bo)" }}>
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between py-4 text-left gap-4 group"
+        className="w-full flex items-center justify-between py-4 text-left gap-4"
       >
         <span
-          className="text-[14px] font-medium font-body transition-colors"
+          className="text-[14px] font-medium"
           style={{ color: "var(--text)" }}
         >
           {item.q}
@@ -293,7 +317,7 @@ function FaqItem({ item }) {
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.2 }}
-          className="text-[20px] flex-shrink-0 leading-none"
+          className="text-[22px]"
           style={{ color: "var(--muted)" }}
         >
           +
@@ -306,11 +330,11 @@ function FaqItem({ item }) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.25 }}
             className="overflow-hidden"
           >
             <p
-              className="text-[13px] leading-relaxed font-body pb-4"
+              className="pb-5 text-[13px] leading-relaxed"
               style={{ color: "var(--muted)" }}
             >
               {item.a}
@@ -329,18 +353,19 @@ export default function PrivateDiningPage() {
 
   return (
     <div
-      className="flex flex-col flex-1 overflow-y-auto font-body"
+      className="flex flex-col flex-1 overflow-y-auto"
       style={{
         background: "var(--bg)",
         color: "var(--text)",
       }}
     >
-      {/* ── Hero Banner ── */}
+      {/* Hero */}
+
       <div className="relative w-full h-[260px] sm:h-[320px] md:h-[400px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80"
-          alt="Elegant private dining room"
-          className="w-full h-full object-cover brightness-[0.55]"
+          alt="Private dining"
+          className="w-full h-full object-cover brightness-[0.5]"
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -349,116 +374,118 @@ export default function PrivateDiningPage() {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.7 }}
           >
-            <p className="text-[11px] tracking-[0.22em] uppercase text-gold font-body font-medium mb-2">
+            <p className="text-[11px] tracking-[0.22em] uppercase text-[#f5c16c] mb-2">
               Burmese Bistro · Exclusive Spaces
             </p>
 
-            <h1 className="font-display text-[40px] sm:text-[54px] md:text-[64px] font-semibold text-white leading-[1.02]">
-              Private <em className="italic text-gold-light">Dining</em>
+            <h1 className="font-display text-[42px] sm:text-[58px] md:text-[68px] font-semibold text-white leading-[1.02]">
+              Private <em className="italic text-[#f5c16c]">Dining</em>
             </h1>
 
-            <p className="mt-3 text-[14px] text-white/70 font-body max-w-[480px] leading-relaxed">
-              Reserve an intimate space for your most meaningful moments —
-              crafted with Burmese warmth, served with quiet elegance.
+            <p className="mt-4 max-w-[520px] text-[14px] leading-relaxed text-white/70">
+              Reserve an intimate space for your celebrations, gatherings, and
+              unforgettable moments.
             </p>
           </motion.div>
         </div>
       </div>
 
-      <div className="max-w-[900px] mx-auto w-full px-4 sm:px-6 md:px-9 py-12 space-y-20">
-        {/* ── Intro ── */}
+      {/* Content */}
+
+      <div className="max-w-[1000px] mx-auto w-full px-4 sm:px-6 md:px-8 py-14 space-y-24">
+        {/* Intro */}
+
         <FadeUp>
           <SectionLabel>Welcome</SectionLabel>
 
           <h2
-            className="font-display text-[30px] sm:text-[38px] font-semibold leading-tight mb-4"
+            className="font-display text-[32px] sm:text-[40px] font-semibold mb-5"
             style={{ color: "var(--text)" }}
           >
             Your celebration, your space.
           </h2>
 
           <p
-            className="text-[14px] leading-relaxed max-w-[640px]"
+            className="max-w-[720px] text-[14px] leading-relaxed"
             style={{ color: "var(--muted)" }}
           >
-            Tucked behind our main dining room, Burmese Bistro's private spaces
-            are available exclusively for you and your guests. Whether you're
-            gathering for two or forty, we offer the same care, the same
-            recipes, and the same warmth — in complete privacy.
+            Whether you're planning an intimate dinner or a grand gathering,
+            Burmese Bistro offers elegant private dining experiences tailored
+            entirely to you.
           </p>
         </FadeUp>
 
-        {/* ── Occasions ── */}
+        {/* Occasions */}
+
         <div>
           <FadeUp>
             <SectionLabel>Perfect For</SectionLabel>
 
             <h2
-              className="font-display text-[30px] sm:text-[36px] font-semibold mb-8"
+              className="font-display text-[32px] sm:text-[38px] font-semibold mb-8"
               style={{ color: "var(--text)" }}
             >
               Every Special Occasion
             </h2>
           </FadeUp>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {OCCASIONS.map((item, i) => (
               <OccasionCard key={item.title} item={item} index={i} />
             ))}
           </div>
         </div>
 
-        {/* ── Packages ── */}
+        {/* Packages */}
+
         <div>
           <FadeUp>
-            <SectionLabel>Pricing</SectionLabel>
+            <SectionLabel>Packages</SectionLabel>
 
             <h2
-              className="font-display text-[30px] sm:text-[36px] font-semibold mb-2"
+              className="font-display text-[32px] sm:text-[38px] font-semibold mb-3"
               style={{ color: "var(--text)" }}
             >
               Choose Your Package
             </h2>
 
-            <p
-              className="text-[13px] font-body mb-8"
-              style={{ color: "var(--muted)" }}
-            >
-              All prices are per event and include service.
+            <p className="text-[13px] mb-8" style={{ color: "var(--muted)" }}>
+              Flexible options designed for every celebration size.
             </p>
           </FadeUp>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {PACKAGES.map((pkg, i) => (
               <PackageCard key={pkg.name} pkg={pkg} index={i} />
             ))}
           </div>
         </div>
 
-        {/* ── Room Details ── */}
+        {/* Room Details */}
+
         <FadeUp>
           <div
-            className="rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 border"
-            style={{ borderColor: "var(--border)" }}
+            className="grid grid-cols-1 md:grid-cols-2 rounded-3xl overflow-hidden border"
+            style={{
+              borderColor: "var(--bo)",
+              background: "var(--card)",
+            }}
           >
-            <div className="h-[200px] md:h-auto">
+            <div className="h-[220px] md:h-auto">
               <img
                 src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80"
-                alt="Private dining room interior"
+                alt="Private dining room"
                 className="w-full h-full object-cover"
               />
             </div>
 
-            <div
-              className="p-7 sm:p-8 flex flex-col justify-center"
-              style={{ background: "var(--card)" }}
-            >
+            <div className="p-8 flex flex-col justify-center">
               <SectionLabel>The Space</SectionLabel>
 
               <h3
-                className="font-display text-[26px] sm:text-[30px] font-semibold mb-4"
+                className="font-display text-[28px] sm:text-[32px] font-semibold mb-5"
                 style={{ color: "var(--text)" }}
               >
                 Designed for intimacy.
@@ -474,7 +501,7 @@ export default function PrivateDiningPage() {
                 ].map((item) => (
                   <li
                     key={item}
-                    className="text-[13px] font-body leading-snug"
+                    className="text-[13px]"
                     style={{ color: "var(--muted)" }}
                   >
                     {item}
@@ -485,13 +512,14 @@ export default function PrivateDiningPage() {
           </div>
         </FadeUp>
 
-        {/* ── FAQ ── */}
+        {/* FAQ */}
+
         <div>
           <FadeUp>
             <SectionLabel>Questions</SectionLabel>
 
             <h2
-              className="font-display text-[30px] sm:text-[36px] font-semibold mb-6"
+              className="font-display text-[32px] sm:text-[38px] font-semibold mb-6"
               style={{ color: "var(--text)" }}
             >
               Frequently Asked
@@ -505,37 +533,38 @@ export default function PrivateDiningPage() {
           </div>
         </div>
 
-        {/* ── CTA ── */}
+        {/* CTA */}
+
         <FadeUp>
-          <div className="relative rounded-2xl overflow-hidden">
+          <div className="relative rounded-3xl overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1200&q=80"
               alt="Guests celebrating"
-              className="w-full h-[220px] sm:h-[260px] object-cover brightness-50"
+              className="w-full h-[240px] sm:h-[300px] object-cover brightness-[0.45]"
             />
 
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-              <h3 className="font-display text-[28px] sm:text-[36px] font-semibold italic text-white mb-3">
+              <h3 className="font-display italic text-[32px] sm:text-[42px] font-semibold text-white mb-4">
                 Ready to book your table?
               </h3>
 
-              <p className="text-[13px] text-white/70 font-body mb-6 max-w-[400px]">
-                Contact us today and our events team will get back to you within
-                24 hours.
+              <p className="max-w-[460px] text-[13px] leading-relaxed text-white/70 mb-7">
+                Contact our events team today and let us create a memorable
+                experience for you and your guests.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={() => navigate("/contact")}
-                  className="px-6 py-2.5 text-white text-[13px] font-medium font-body rounded-xl transition-colors duration-200"
-                  style={{ background: "var(--gold)" }}
+                  className="px-6 py-3 rounded-xl text-white text-[13px] font-medium transition-colors"
+                  style={{ background: "var(--br)" }}
                 >
                   Make an Enquiry
                 </button>
 
                 <button
                   onClick={() => navigate("/reservations")}
-                  className="px-6 py-2.5 bg-white/15 hover:bg-white/25 backdrop-blur-sm border border-white/30 text-white text-[13px] font-medium font-body rounded-xl transition-colors duration-200"
+                  className="px-6 py-3 rounded-xl border border-white/30 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white text-[13px] font-medium transition-colors"
                 >
                   View Reservations
                 </button>

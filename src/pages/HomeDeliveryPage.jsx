@@ -1,7 +1,9 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-
+import mohinga from "../assets/images/mohinga.jpg";
+import tealeafsalad from "../assets/images/tealeafsalad.jpg";
+import coconutnoodle from "../assets/images/coconutnoodle.jpg";
 // ── Data ──────────────────────────────────────────────────────────────────
 
 const BENEFITS = [
@@ -41,29 +43,26 @@ const POPULAR_ITEMS = [
   {
     name: "Mohinga",
     subtitle: "Fish Noodle Soup",
-    price: "8,500",
+    price: "25,000",
     time: "20 min",
     tag: "Bestseller",
-    image:
-      "https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=500&q=80",
+    image: mohinga,
   },
   {
     name: "Ohn No Khao Swe",
     subtitle: "Coconut Chicken Noodle",
-    price: "9,000",
+    price: "25,000",
     time: "25 min",
     tag: "Popular",
-    image:
-      "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500&q=80",
+    image: coconutnoodle,
   },
   {
     name: "Lahpet Thoke",
     subtitle: "Tea Leaf Salad",
-    price: "6,000",
+    price: "35,000",
     time: "15 min",
     tag: "Seasonal",
-    image:
-      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&q=80",
+    image: tealeafsalad,
   },
 ];
 
@@ -199,7 +198,7 @@ export default function HomeDeliveryPage() {
       {/* Hero */}
       <div className="relative w-full h-[240px] sm:h-[300px] md:h-[380px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1526367790999-0150786686a2?w=1400&q=80"
+          src={mohinga}
           alt="Food delivery"
           className="w-full h-full object-cover brightness-[0.5]"
         />

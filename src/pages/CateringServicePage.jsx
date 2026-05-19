@@ -124,46 +124,35 @@ function PackageCard({ pkg, index }) {
       className={`relative flex flex-col rounded-2xl p-6 border transition-all duration-300 ${
         pkg.highlight
           ? "bg-gold border-gold shadow-xl shadow-gold/20"
-          : "hover:border-gold/50 hover:shadow-md"
+          : "bg-[var(--card)] border-[var(--bo)] hover:border-gold/50 hover:shadow-md"
       }`}
-      style={
-        !pkg.highlight
-          ? {
-              background: "var(--card)",
-              borderColor: "var(--border)",
-            }
-          : {}
-      }
     >
       {pkg.highlight && (
-        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] font-semibold tracking-widest uppercase px-3 py-1 rounded-full whitespace-nowrap">
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-black dark:bg-white text-white dark:text-black text-[10px] font-semibold tracking-widest uppercase px-3 py-1 rounded-full whitespace-nowrap">
           Most Popular
         </span>
       )}
 
       <p
-        className="font-display text-[28px] font-semibold mb-1"
-        style={{
-          color: pkg.highlight ? "#fff" : "var(--text)",
-        }}
+        className={`font-display text-[28px] font-semibold mb-1 ${
+          pkg.highlight ? "text-white" : "text-stone-900 dark:text-stone-100"
+        }`}
       >
         {pkg.name}
       </p>
 
       <p
-        className="text-[12px] mb-4"
-        style={{
-          color: pkg.highlight ? "rgba(255,255,255,0.8)" : "var(--muted)",
-        }}
+        className={`text-[12px] mb-4 ${
+          pkg.highlight ? "text-white/80" : "text-stone-500 dark:text-stone-400"
+        }`}
       >
         {pkg.guests} guests
       </p>
 
       <div
-        className="flex items-end gap-1 mb-6"
-        style={{
-          color: pkg.highlight ? "#fff" : "var(--text)",
-        }}
+        className={`flex items-end gap-1 mb-6 ${
+          pkg.highlight ? "text-white" : "text-stone-900 dark:text-stone-100"
+        }`}
       >
         {pkg.price === "Custom" ? (
           <span className="font-display text-[32px] font-semibold">
@@ -176,10 +165,11 @@ function PackageCard({ pkg, index }) {
             </span>
 
             <span
-              className="text-[12px] mb-1"
-              style={{
-                color: pkg.highlight ? "rgba(255,255,255,0.7)" : "var(--muted)",
-              }}
+              className={`text-[12px] mb-1 ${
+                pkg.highlight
+                  ? "text-white/70"
+                  : "text-stone-500 dark:text-stone-400"
+              }`}
             >
               MMK
             </span>
@@ -199,10 +189,11 @@ function PackageCard({ pkg, index }) {
             </span>
 
             <span
-              className="text-[13px] leading-snug"
-              style={{
-                color: pkg.highlight ? "rgba(255,255,255,0.9)" : "var(--muted)",
-              }}
+              className={`text-[13px] leading-snug ${
+                pkg.highlight
+                  ? "text-white/90"
+                  : "text-stone-500 dark:text-stone-400"
+              }`}
             >
               {perk}
             </span>
@@ -228,32 +219,19 @@ function FaqItem({ item }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div
-      className="border-b"
-      style={{
-        borderColor: "var(--border)",
-      }}
-    >
+    <div className="border-b border-stone-200 dark:border-stone-800">
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between py-4 text-left gap-4 group"
       >
-        <span
-          className="text-[14px] font-medium group-hover:text-gold transition-colors"
-          style={{
-            color: "var(--text)",
-          }}
-        >
+        <span className="text-[14px] font-medium text-stone-900 dark:text-stone-100 group-hover:text-gold transition-colors">
           {item.q}
         </span>
 
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.2 }}
-          className="text-[20px]"
-          style={{
-            color: "var(--muted)",
-          }}
+          className="text-[20px] text-stone-500 dark:text-stone-400"
         >
           +
         </motion.span>
@@ -268,12 +246,7 @@ function FaqItem({ item }) {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <p
-              className="text-[13px] leading-relaxed pb-4"
-              style={{
-                color: "var(--muted)",
-              }}
-            >
+            <p className="text-[13px] leading-relaxed pb-4 text-stone-500 dark:text-stone-400">
               {item.a}
             </p>
           </motion.div>
@@ -289,13 +262,7 @@ export default function CateringServicePage() {
   const navigate = useNavigate();
 
   return (
-    <div
-      className="flex flex-col flex-1 overflow-y-auto font-body transition-colors duration-300"
-      style={{
-        background: "var(--bg)",
-        color: "var(--text)",
-      }}
-    >
+    <div className="flex flex-col flex-1 overflow-y-auto font-body bg-stone-50 dark:bg-stone-950 text-stone-900 dark:text-stone-100 transition-colors duration-300">
       {/* Hero */}
       <div className="relative w-full h-[240px] sm:h-[300px] md:h-[380px] overflow-hidden">
         <img
@@ -332,17 +299,11 @@ export default function CateringServicePage() {
         <FadeUp>
           <SectionLabel>About Catering</SectionLabel>
 
-          <h2
-            className="font-display text-[30px] sm:text-[38px] font-semibold leading-tight mb-4"
-            style={{ color: "var(--text)" }}
-          >
+          <h2 className="font-display text-[30px] sm:text-[38px] font-semibold leading-tight mb-4 text-stone-900 dark:text-stone-100">
             We bring the kitchen to you.
           </h2>
 
-          <p
-            className="text-[14px] leading-relaxed max-w-[640px]"
-            style={{ color: "var(--muted)" }}
-          >
+          <p className="text-[14px] leading-relaxed max-w-[640px] text-stone-500 dark:text-stone-400">
             Burmese Bistro caters weddings, celebrations, office events, and
             community gatherings with authentic Burmese cuisine.
           </p>
@@ -353,10 +314,7 @@ export default function CateringServicePage() {
           <FadeUp>
             <SectionLabel>Events</SectionLabel>
 
-            <h2
-              className="font-display text-[30px] sm:text-[36px] font-semibold mb-8"
-              style={{ color: "var(--text)" }}
-            >
+            <h2 className="font-display text-[30px] sm:text-[36px] font-semibold mb-8 text-stone-900 dark:text-stone-100">
               Every occasion, beautifully fed.
             </h2>
           </FadeUp>
@@ -372,25 +330,15 @@ export default function CateringServicePage() {
                   duration: 0.5,
                   delay: i * 0.07,
                 }}
-                className="flex flex-col gap-3 p-5 rounded-2xl border hover:border-gold/60 hover:shadow-lg transition-all duration-300"
-                style={{
-                  background: "var(--card)",
-                  borderColor: "var(--border)",
-                }}
+                className="flex flex-col gap-3 p-5 rounded-2xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 hover:border-gold/60 hover:shadow-lg transition-all duration-300"
               >
                 <span className="text-[30px]">{item.icon}</span>
 
-                <h3
-                  className="font-display text-[19px] font-semibold"
-                  style={{ color: "var(--text)" }}
-                >
+                <h3 className="font-display text-[19px] font-semibold text-stone-900 dark:text-stone-100">
                   {item.title}
                 </h3>
 
-                <p
-                  className="text-[13px] leading-relaxed"
-                  style={{ color: "var(--muted)" }}
-                >
+                <p className="text-[13px] leading-relaxed text-stone-500 dark:text-stone-400">
                   {item.desc}
                 </p>
               </motion.div>
@@ -403,14 +351,11 @@ export default function CateringServicePage() {
           <FadeUp>
             <SectionLabel>Pricing</SectionLabel>
 
-            <h2
-              className="font-display text-[30px] sm:text-[36px] font-semibold mb-2"
-              style={{ color: "var(--text)" }}
-            >
+            <h2 className="font-display text-[30px] sm:text-[36px] font-semibold mb-2 text-stone-900 dark:text-stone-100">
               Catering Packages
             </h2>
 
-            <p className="text-[13px] mb-8" style={{ color: "var(--muted)" }}>
+            <p className="text-[13px] mb-8 text-stone-500 dark:text-stone-400">
               Flexible catering options for every event size.
             </p>
           </FadeUp>
@@ -427,10 +372,7 @@ export default function CateringServicePage() {
           <FadeUp>
             <SectionLabel>Questions</SectionLabel>
 
-            <h2
-              className="font-display text-[30px] sm:text-[36px] font-semibold mb-6"
-              style={{ color: "var(--text)" }}
-            >
+            <h2 className="font-display text-[30px] sm:text-[36px] font-semibold mb-6 text-stone-900 dark:text-stone-100">
               Frequently Asked
             </h2>
           </FadeUp>
