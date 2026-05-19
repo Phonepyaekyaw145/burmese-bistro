@@ -4,59 +4,45 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({
-      success: false,
-      message: "Method not allowed",
-    });
+    return res.status(405).end();
   }
 
   try {
-    const { name, email, table, date, time, occasion } = req.body;
+    const { name, email, phone, table, date, time, occasion } = req.body;
 
     const data = await resend.emails.send({
       from: "Burmese Bistro <onboarding@resend.dev>",
-      to: email,
-      subject: "Your Booking is Confirmed 🍽️",
+      to: [email],
+      subject: "Booking Confirmed 🍽️",
       html: `
-        <div style="font-family:sans-serif;padding:20px">
-          <h1>Booking Confirmed 🎉</h1>
+        <h2>Booking Confirmed</h2>
 
-          <p>Hello ${name},</p>
+        <p>Hello ${name},</p>
 
-          <p>
-            Your reservation at <strong>Burmese Bistro</strong>
-            has been confirmed.
-          </p>
+        <p>Your booking has been confirmed successfully.</p>
 
-          <div style="
-            background:#f5f5f5;
-            padding:16px;
-            border-radius:12px;
-            margin-top:20px;
-          ">
-            <p><strong>Table:</strong> ${table}</p>
-            <p><strong>Date:</strong> ${date}</p>
-            <p><strong>Time:</strong> ${time}</p>
-            <p><strong>Occasion:</strong> ${occasion || "Not specified"}</p>
-          </div>
+        <ul>
+          <li><b>Table:</b> ${table}</li>
+          <li><b>Date:</b> ${date}</li>
+          <li><b>Time:</b> ${time}</li>
+          <li><b>Occasion:</b> ${occasion || "None"}</li>
+          <li><b>Phone:</b> ${phone}</li>
+        </ul>
 
-          <p style="margin-top:20px">
-            We look forward to serving you 🍜
-          </p>
-        </div>
+        <p>Thank you for choosing Burmese Bistro ❤️</p>
       `,
     });
 
-    return res.status(200).json({
+    res.status(200).json({
       success: true,
       data,
     });
-  } catch (error) {
-    console.error(error);
+  } catch (err) {
+    console.error(err);
 
-    return res.status(500).json({
+    res.status(500).json({
       success: false,
-      error,
+      error: err.message,
     });
   }
 }
