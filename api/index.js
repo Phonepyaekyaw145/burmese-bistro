@@ -84,17 +84,19 @@ ${lastMessage}
         } else if (msg.includes("reservation") || msg.includes("book")) {
           reply =
             "📞 You can make a reservation by contacting Burmese Bistro directly.";
-        } else if (
-          msg.includes("popular") ||
-          msg.includes("dishes") ||
-          msg.includes("Mohinga")
-        ) {
+        } else if (msg.includes("popular") || msg.includes("dishes")) {
           reply =
             "🍜 Our popular dishes include Mohinga, Shan Noodles, Tea Leaf Salad, and Burmese Curry.";
         } else if (msg.includes("price")) {
           reply = "💵 Most dishes range from 8000 MMK to 30000 MMK.";
         } else if (msg.includes("hello") || msg.includes("hi")) {
           reply = "👋 Hello! Welcome to Burmese Bistro support.";
+        } else if (msg.includes("mohinga")) {
+          reply =
+            "🍜 Mohinga is our signature dish! It's a delicious catfish broth noodle soup.";
+        } else if (msg.includes("location")) {
+          reply =
+            "📍88 Bogyoke Road, Yangon, Myanmar. 5 min walk from Bogyoke Market. Phone: +95 1 234 5678";
         }
 
         return res.status(200).json({
