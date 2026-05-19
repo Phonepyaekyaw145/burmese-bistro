@@ -143,7 +143,7 @@ Return ONLY valid JSON.
   "score": 5,
   "themes": ["Food", "Service"],
   "summary": "Short summary",
-  "ownerReply": "Friendly reply"
+  "ownerReply": "If rating is below 4, politely apologize and respond professionally. If rating is 4 or above, show appreciation warmly and thankfully."
 }
 `;
 
@@ -192,9 +192,14 @@ Return ONLY valid JSON.
           score: rating,
           themes,
           summary: "Thank you for sharing your experience with Burmese Bistro.",
-          ownerReply: `🙏 Thank you ${
-            name || "guest"
-          }! We truly appreciate your feedback and hope to serve you again soon. Have a wonderful day!`,
+          ownerReply:
+            rating < 4
+              ? `🙏 We're very sorry ${
+                  name || "guest"
+                } that your experience did not meet expectations. Thank you for your honest feedback. We will work hard to improve our food and service, and we hope to serve you better next time.`
+              : `💛 Thank you so much ${
+                  name || "guest"
+                } for your wonderful review and support! We're truly happy that you enjoyed your experience at Burmese Bistro. We look forward to serving you again soon!`,
           ai: false,
           fallback: true,
         });
