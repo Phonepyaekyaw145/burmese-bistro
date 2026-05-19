@@ -103,7 +103,11 @@ function SpecialCard({ item, index }) {
         ease: [0.22, 1, 0.36, 1],
       }}
       whileHover={{ y: -6, transition: { duration: 0.25 } }}
-      className="group relative flex flex-col bg-white dark:bg-stone-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-stone-100 dark:border-stone-800 cursor-pointer"
+      className="group relative flex flex-col rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-black/10 transition-all duration-300 cursor-pointer"
+      style={{
+        background: "var(--cd)",
+        border: "1px solid var(--bo)",
+      }}
       onClick={() => navigate("/menu")}
     >
       {/* Image */}
@@ -139,20 +143,34 @@ function SpecialCard({ item, index }) {
 
       {/* Body */}
       <div className="flex flex-col flex-1 p-4 sm:p-5">
-        <h3 className="font-display text-[22px] sm:text-[24px] font-semibold text-stone-900 dark:text-stone-100 leading-tight mb-0.5">
+        <h3
+          className="font-display text-[22px] sm:text-[24px] font-semibold leading-tight mb-0.5 transition-colors duration-300"
+          style={{ color: "var(--tx)" }}
+        >
           {item.name}
         </h3>
         <p className="text-[11px] tracking-widest uppercase text-gold font-body font-medium mb-3">
           {item.subtitle}
         </p>
-        <p className="text-[13px] text-stone-500 dark:text-stone-400 leading-relaxed font-body flex-1 mb-4">
+        <p
+          className="text-[13px] leading-relaxed font-body flex-1 mb-4 transition-colors duration-300"
+          style={{ color: "var(--mt)" }}
+        >
           {item.desc}
         </p>
 
         {/* Footer row */}
-        <div className="flex items-center justify-between pt-3 border-t border-stone-100 dark:border-stone-800">
+        <div
+          className="flex items-center justify-between pt-3"
+          style={{
+            borderTop: "1px solid var(--bo)",
+          }}
+        >
           <SpiceIndicator level={item.spice} />
-          <div className="flex items-center gap-1.5 text-[12px] text-stone-400 dark:text-stone-500 font-body">
+          <div
+            className="flex items-center gap-1.5 text-[12px] font-body transition-colors duration-300"
+            style={{ color: "var(--mt)" }}
+          >
             <svg
               className="w-3.5 h-3.5"
               fill="none"
