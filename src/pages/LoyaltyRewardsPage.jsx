@@ -1,5 +1,3 @@
-// LoyaltyRewardsPage.jsx
-
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { motion, useInView, AnimatePresence } from "framer-motion";
@@ -12,8 +10,6 @@ const TIERS = [
     icon: "🥈",
     minPoints: 0,
     maxPoints: 499,
-    color: "border-stone-300 dark:border-stone-700",
-    badge: "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300",
     perks: [
       "5% discount on every dine-in order",
       "Birthday reward — free dessert",
@@ -27,8 +23,6 @@ const TIERS = [
     minPoints: 500,
     maxPoints: 1499,
     highlight: true,
-    color: "border-gold",
-    badge: "bg-gold/10 text-gold-dark dark:text-gold-light",
     perks: [
       "10% discount on dine-in & takeaway",
       "Birthday reward — free main course",
@@ -42,8 +36,6 @@ const TIERS = [
     icon: "💎",
     minPoints: 1500,
     maxPoints: null,
-    color: "border-stone-400 dark:border-stone-500",
-    badge: "bg-stone-200 dark:bg-stone-700 text-stone-700 dark:text-stone-200",
     perks: [
       "15% discount on all orders",
       "Birthday reward — full set meal for two",
@@ -134,6 +126,7 @@ const FAQS = [
 
 function FadeUp({ children, delay = 0, className = "" }) {
   const ref = useRef(null);
+
   const inView = useInView(ref, {
     once: true,
     margin: "-60px",
@@ -160,6 +153,7 @@ function SectionLabel({ children }) {
   return (
     <div className="flex items-center gap-3 mb-3">
       <span className="w-8 h-px bg-gold" />
+
       <p className="text-[11px] tracking-[0.22em] uppercase text-gold font-medium">
         {children}
       </p>
@@ -179,9 +173,13 @@ function TierCard({ tier, index }) {
         duration: 0.5,
         delay: index * 0.1,
       }}
-      className={`relative rounded-3xl border-2 p-6 bg-white dark:bg-stone-900 transition-all duration-300 ${
-        tier.color
-      } ${tier.highlight ? "shadow-2xl shadow-gold/20" : "hover:shadow-lg"}`}
+      className={`relative rounded-3xl border-2 p-6 transition-all duration-300 ${
+        tier.highlight ? "shadow-2xl shadow-gold/20" : "hover:shadow-lg"
+      }`}
+      style={{
+        background: "var(--card)",
+        borderColor: tier.highlight ? "#d4a017" : "var(--bo)",
+      }}
     >
       {tier.highlight && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
@@ -195,12 +193,21 @@ function TierCard({ tier, index }) {
         <span className="text-[34px]">{tier.icon}</span>
 
         <div>
-          <h3 className="font-display text-[28px] font-semibold text-stone-900 dark:text-stone-100">
+          <h3
+            className="font-display text-[28px] font-semibold"
+            style={{ color: "var(--text)" }}
+          >
             {tier.name}
           </h3>
 
           <span
-            className={`inline-block mt-1 px-2 py-1 rounded-full text-[10px] font-semibold tracking-wide ${tier.badge}`}
+            className="inline-block mt-1 px-2 py-1 rounded-full text-[10px] font-semibold tracking-wide"
+            style={{
+              background: tier.highlight
+                ? "rgba(212,160,23,0.12)"
+                : "var(--bg2)",
+              color: tier.highlight ? "#d4a017" : "var(--text)",
+            }}
           >
             {tier.maxPoints
               ? `${tier.minPoints} - ${tier.maxPoints} pts`
@@ -214,7 +221,10 @@ function TierCard({ tier, index }) {
           <li key={perk} className="flex items-start gap-2">
             <span className="text-gold text-[13px] mt-0.5">✓</span>
 
-            <span className="text-[13px] text-stone-600 dark:text-stone-400 leading-relaxed">
+            <span
+              className="text-[13px] leading-relaxed"
+              style={{ color: "var(--muted)" }}
+            >
               {perk}
             </span>
           </li>
@@ -224,10 +234,17 @@ function TierCard({ tier, index }) {
       <button
         onClick={() => navigate("/signup")}
         className={`w-full py-3 rounded-xl text-[13px] font-medium transition-all duration-200 ${
-          tier.highlight
-            ? "bg-gold hover:bg-gold-dark text-white"
-            : "border border-stone-200 dark:border-stone-700 hover:border-gold text-stone-700 dark:text-stone-300 hover:text-gold"
+          tier.highlight ? "bg-gold hover:bg-gold-dark text-white" : ""
         }`}
+        style={
+          !tier.highlight
+            ? {
+                border: "1px solid var(--bo)",
+                color: "var(--text)",
+                background: "transparent",
+              }
+            : {}
+        }
       >
         {tier.name === "Silver" ? "Join Free" : `Reach ${tier.name}`}
       </button>
@@ -239,18 +256,25 @@ function FaqItem({ item }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-b border-stone-200 dark:border-stone-800">
+    <div
+      className="border-b transition-colors duration-300"
+      style={{ borderColor: "var(--bo)" }}
+    >
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between py-5 text-left"
       >
-        <span className="text-[14px] font-medium text-stone-800 dark:text-stone-200">
+        <span
+          className="text-[14px] font-medium"
+          style={{ color: "var(--text)" }}
+        >
           {item.q}
         </span>
 
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
-          className="text-[22px] text-stone-400"
+          className="text-[22px]"
+          style={{ color: "var(--muted)" }}
         >
           +
         </motion.span>
@@ -265,7 +289,10 @@ function FaqItem({ item }) {
             transition={{ duration: 0.25 }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-[13px] leading-relaxed text-stone-500 dark:text-stone-400">
+            <p
+              className="pb-5 text-[13px] leading-relaxed"
+              style={{ color: "var(--muted)" }}
+            >
               {item.a}
             </p>
           </motion.div>
@@ -283,12 +310,21 @@ function PointsProgress() {
   ];
 
   return (
-    <div className="rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 p-6">
+    <div
+      className="rounded-3xl border p-6 transition-colors duration-300"
+      style={{
+        background: "var(--card)",
+        borderColor: "var(--bo)",
+      }}
+    >
       <p className="text-[11px] tracking-[0.18em] uppercase text-gold font-medium mb-5">
         Tier Progression
       </p>
 
-      <div className="h-2 rounded-full overflow-hidden bg-stone-100 dark:bg-stone-800">
+      <div
+        className="h-2 rounded-full overflow-hidden"
+        style={{ background: "var(--bg2)" }}
+      >
         <div className="h-full w-1/3 bg-gold rounded-full" />
       </div>
 
@@ -297,11 +333,14 @@ function PointsProgress() {
           <div key={tier.name} className="flex flex-col items-center gap-1">
             <span className="text-[20px]">{tier.icon}</span>
 
-            <span className="font-display text-[14px] font-semibold text-stone-900 dark:text-stone-100">
+            <span
+              className="font-display text-[14px] font-semibold"
+              style={{ color: "var(--text)" }}
+            >
               {tier.name}
             </span>
 
-            <span className="text-[11px] text-stone-400 dark:text-stone-500">
+            <span className="text-[11px]" style={{ color: "var(--muted)" }}>
               {tier.points}
             </span>
           </div>
@@ -317,7 +356,14 @@ export default function LoyaltyRewardsPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col flex-1 overflow-y-auto bg-stone-50 dark:bg-stone-950 font-body">
+    <div
+      className="flex flex-col flex-1 overflow-y-auto transition-colors duration-300"
+      style={{
+        background: "var(--bg)",
+        color: "var(--text)",
+        fontFamily: "var(--fb)",
+      }}
+    >
       {/* Hero */}
 
       <div className="relative w-full h-[260px] sm:h-[340px] md:h-[420px] overflow-hidden">
@@ -359,11 +405,17 @@ export default function LoyaltyRewardsPage() {
         <FadeUp>
           <SectionLabel>About the Programme</SectionLabel>
 
-          <h2 className="font-display text-[32px] sm:text-[40px] font-semibold text-stone-900 dark:text-stone-100 mb-5">
+          <h2
+            className="font-display text-[32px] sm:text-[40px] font-semibold mb-5"
+            style={{ color: "var(--text)" }}
+          >
             Dining that rewards you back.
           </h2>
 
-          <p className="max-w-[700px] text-[14px] leading-relaxed text-stone-500 dark:text-stone-400">
+          <p
+            className="max-w-[700px] text-[14px] leading-relaxed"
+            style={{ color: "var(--muted)" }}
+          >
             Every visit earns points that unlock discounts, exclusive dishes,
             priority reservations, birthday gifts, and premium experiences.
             Membership is free forever.
@@ -382,13 +434,23 @@ export default function LoyaltyRewardsPage() {
             ].map((item) => (
               <div
                 key={item.label}
-                className="rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 p-5"
+                className="rounded-3xl border p-5"
+                style={{
+                  background: "var(--card)",
+                  borderColor: "var(--bo)",
+                }}
               >
-                <h3 className="font-display text-[30px] font-semibold text-stone-900 dark:text-stone-100">
+                <h3
+                  className="font-display text-[30px] font-semibold"
+                  style={{ color: "var(--text)" }}
+                >
                   {item.value}
                 </h3>
 
-                <p className="mt-1 text-[11px] text-stone-400 dark:text-stone-500">
+                <p
+                  className="mt-1 text-[11px]"
+                  style={{ color: "var(--muted)" }}
+                >
                   {item.label}
                 </p>
               </div>
@@ -402,7 +464,10 @@ export default function LoyaltyRewardsPage() {
           <FadeUp>
             <SectionLabel>Benefits</SectionLabel>
 
-            <h2 className="font-display text-[32px] sm:text-[38px] font-semibold text-stone-900 dark:text-stone-100 mb-8">
+            <h2
+              className="font-display text-[32px] sm:text-[38px] font-semibold mb-8"
+              style={{ color: "var(--text)" }}
+            >
               Everything included with membership.
             </h2>
           </FadeUp>
@@ -415,15 +480,25 @@ export default function LoyaltyRewardsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 p-6 hover:shadow-lg hover:border-gold/50 transition-all"
+                className="rounded-3xl border p-6 hover:shadow-lg transition-all"
+                style={{
+                  background: "var(--card)",
+                  borderColor: "var(--bo)",
+                }}
               >
                 <span className="text-[30px]">{item.icon}</span>
 
-                <h3 className="mt-4 font-display text-[20px] font-semibold text-stone-900 dark:text-stone-100">
+                <h3
+                  className="mt-4 font-display text-[20px] font-semibold"
+                  style={{ color: "var(--text)" }}
+                >
                   {item.title}
                 </h3>
 
-                <p className="mt-2 text-[13px] leading-relaxed text-stone-500 dark:text-stone-400">
+                <p
+                  className="mt-2 text-[13px] leading-relaxed"
+                  style={{ color: "var(--muted)" }}
+                >
                   {item.desc}
                 </p>
               </motion.div>
@@ -437,11 +512,14 @@ export default function LoyaltyRewardsPage() {
           <FadeUp>
             <SectionLabel>Membership Tiers</SectionLabel>
 
-            <h2 className="font-display text-[32px] sm:text-[38px] font-semibold text-stone-900 dark:text-stone-100 mb-3">
+            <h2
+              className="font-display text-[32px] sm:text-[38px] font-semibold mb-3"
+              style={{ color: "var(--text)" }}
+            >
               Three tiers, richer rewards.
             </h2>
 
-            <p className="text-[13px] text-stone-500 dark:text-stone-400 mb-8">
+            <p className="text-[13px] mb-8" style={{ color: "var(--muted)" }}>
               Unlock better perks as your lifetime points increase.
             </p>
           </FadeUp>
@@ -465,7 +543,10 @@ export default function LoyaltyRewardsPage() {
           <FadeUp>
             <SectionLabel>How It Works</SectionLabel>
 
-            <h2 className="font-display text-[32px] sm:text-[38px] font-semibold text-stone-900 dark:text-stone-100 mb-8">
+            <h2
+              className="font-display text-[32px] sm:text-[38px] font-semibold mb-8"
+              style={{ color: "var(--text)" }}
+            >
               Simple from the first visit.
             </h2>
           </FadeUp>
@@ -478,17 +559,27 @@ export default function LoyaltyRewardsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="relative rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 p-6"
+                className="relative rounded-3xl border p-6"
+                style={{
+                  background: "var(--card)",
+                  borderColor: "var(--bo)",
+                }}
               >
                 <span className="font-display text-[48px] text-gold/20 font-semibold">
                   {step.step}
                 </span>
 
-                <h3 className="mt-3 font-display text-[20px] font-semibold text-stone-900 dark:text-stone-100">
+                <h3
+                  className="mt-3 font-display text-[20px] font-semibold"
+                  style={{ color: "var(--text)" }}
+                >
                   {step.title}
                 </h3>
 
-                <p className="mt-2 text-[13px] leading-relaxed text-stone-500 dark:text-stone-400">
+                <p
+                  className="mt-2 text-[13px] leading-relaxed"
+                  style={{ color: "var(--muted)" }}
+                >
                   {step.desc}
                 </p>
               </motion.div>
@@ -502,12 +593,15 @@ export default function LoyaltyRewardsPage() {
           <FadeUp>
             <SectionLabel>Questions</SectionLabel>
 
-            <h2 className="font-display text-[32px] sm:text-[38px] font-semibold text-stone-900 dark:text-stone-100 mb-6">
+            <h2
+              className="font-display text-[32px] sm:text-[38px] font-semibold mb-6"
+              style={{ color: "var(--text)" }}
+            >
               Frequently Asked
             </h2>
           </FadeUp>
 
-          <div className="divide-y divide-stone-200 dark:divide-stone-800">
+          <div>
             {FAQS.map((item, i) => (
               <FaqItem key={i} item={item} />
             ))}
