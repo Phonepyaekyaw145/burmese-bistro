@@ -151,7 +151,7 @@ export const MENU = {
     {
       id: 7,
       name: "Kyar Zan Hinn",
-      desc: "ကြာကြာမငြင်းသွားနဲ့ ကြာဇံဟင်းလေးဆွဲရအောင်လေ။",
+      desc: "ကြာကြာမငြင်းသွားနဲ့ ကြာဇံဟင်းလေးဆွဲထား။",
       price: 21000,
       image: kyrzanhinn,
       tags: ["popular", "musttry", "spicy"],
