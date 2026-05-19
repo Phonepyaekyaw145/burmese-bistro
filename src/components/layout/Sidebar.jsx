@@ -252,6 +252,7 @@ export default function Sidebar() {
         className="hidden lg:flex w-[260px] shrink-0 flex-col border-l"
         style={{
           borderColor: "var(--bo)",
+          background: "var(--cd)",
         }}
       >
         <SidebarPanel />
@@ -274,6 +275,7 @@ export default function Sidebar() {
         className="lg:hidden fixed top-0 right-0 h-full w-[280px] z-50 border-l shadow-2xl transition-transform duration-300"
         style={{
           borderColor: "var(--bo)",
+          background: "var(--cd)",
           transform: sidebarOpen ? "translateX(0)" : "translateX(100%)",
         }}
       >
