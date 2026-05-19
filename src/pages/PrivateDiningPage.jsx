@@ -41,7 +41,7 @@ const PACKAGES = [
   {
     name: "Intimate",
     guests: "2 – 8",
-    price: "120,000",
+    price: "800,000",
     highlight: false,
     perks: [
       "Private room with ambient lighting",
@@ -54,7 +54,7 @@ const PACKAGES = [
   {
     name: "Signature",
     guests: "8 – 20",
-    price: "280,000",
+    price: "2,000,000",
     highlight: true,
     perks: [
       "Exclusive private hall",
@@ -69,7 +69,7 @@ const PACKAGES = [
   {
     name: "Grand",
     guests: "20 – 40",
-    price: "580,000",
+    price: "5,800,000",
     highlight: false,
     perks: [
       "Full venue buyout",

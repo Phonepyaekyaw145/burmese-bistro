@@ -26,7 +26,7 @@ const PACKAGES = [
   {
     name: "Starter",
     guests: "20 – 50",
-    price: "350,000",
+    price: "5,000,000",
     highlight: false,
     perks: [
       "3-dish buffet menu",
@@ -37,7 +37,7 @@ const PACKAGES = [
   {
     name: "Banquet",
     guests: "50 – 150",
-    price: "850,000",
+    price: "10,000,000",
     highlight: true,
     perks: [
       "6-dish buffet",
@@ -154,17 +154,16 @@ function PackageCard({ pkg, index }) {
 
       <h3
         className={`font-display text-[30px] font-semibold mb-1 ${
-          pkg.highlight ? "text-white" : "text-[var(--text)]"
+          pkg.highlight ? "text-gold" : "text-[var(--text)]"
         }`}
       >
         {pkg.name}
       </h3>
 
       <p
-        className="text-[13px] mb-4"
-        style={{
-          color: pkg.highlight ? "rgba(255,255,255,0.75)" : "var(--text-soft)",
-        }}
+        className={`text-[13px] mb-4 ${
+          pkg.highlight ? "text-gold" : "text-stone-600 dark:text-stone-400"
+        }`}
       >
         {pkg.guests} guests
       </p>

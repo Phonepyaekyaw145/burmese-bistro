@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { BRAND } from "../data/siteData";
 
 // ── Put your QR image here ────────────────────────────────────────────────
-import qrCode from "../assets/images/qr-code.png";
+import authqr from "../assets/images/authqr.jpg";
 
 // ── Data ──────────────────────────────────────────────────────────────────
 
@@ -204,7 +204,7 @@ export default function QRTableOrderingPage() {
                 <div className="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-gold rounded-br-lg" />
 
                 <img
-                  src={qrCode}
+                  src={authqr}
                   alt="Burmese Bistro Table QR Code"
                   className="w-[200px] h-[200px] sm:w-[220px] sm:h-[220px] object-contain rounded-xl"
                 />
@@ -217,7 +217,10 @@ export default function QRTableOrderingPage() {
                   >
                     Table
                   </p>
-                  <p className="font-display text-[26px] font-semibold text-stone-900 dark:text-stone-100 leading-none">
+                  <p
+                    className="font-display text-[26px] font-semibold leading-none"
+                    style={{ color: "var(--text)" }}
+                  >
                     {tableName}
                   </p>
                 </div>
@@ -252,9 +255,12 @@ export default function QRTableOrderingPage() {
                     );
                     navigate("/auth");
                   }}
-                  className="px-5 py-2.5 bg-gold hover:bg-gold-dark text-white text-[13px] font-medium font-body tracking-wide rounded-xl transition-colors duration-200"
+                  className="px-5 py-2.5 bg-gold hover:bg-gold-dark text-[13px] font-medium font-body tracking-wide rounded-xl transition-colors duration-200"
+                  style={{
+                    color: "var(--text)",
+                  }}
                 >
-                  Start Ordering
+                  Start Booking?
                 </button>
                 <button
                   onClick={() => navigate("/support")}

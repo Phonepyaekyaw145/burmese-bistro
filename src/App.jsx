@@ -28,7 +28,7 @@ import PrivateDiningPage from "./pages/PrivateDiningPage";
 import CateringServicePage from "./pages/CateringServicePage";
 import LoyaltyRewardsPage from "./pages/LoyaltyRewardsPage";
 import OurStoryPage from "./pages/OurStoryPage";
-
+import ScrollToTopButton from "./components/common/ScrollToTopButton";
 // ✅ NEW FLOW PAGES
 import AuthPage from "./pages/AuthPage";
 import BookingPage from "./pages/BookingPage";
@@ -120,6 +120,7 @@ function AppShell() {
                 element={<LoyaltyRewardsPage />}
               />
             </Routes>
+            <ScrollToTopButton />
           </div>
 
           {/* Footer hidden on welcome */}

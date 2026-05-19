@@ -61,34 +61,37 @@ export const SLIDES = [
     image: coconutnoodle,
     tag: "National Dish",
     title: "Ohn No Khao Swe",
-    subtitle:
-      "Coconut milk noodle soup with tender chicken — a comforting classic.",
+    subtitle: "ကိုကိုးနဲ့ချက်တဲ့ ကိုကိုးနက်ခေါက်ဆွဲ။",
   },
   {
     image: ceylontea,
     tag: "House Drinks",
     title: "Ceylon Tea ",
-    subtitle:
-      "Pyit Pyit Nhit Nhit Ah Ya Thar (Myanmar milk tea) with rich flavor and creamy texture.",
+    subtitle: "ပြစ်ပြစ်နှစ်နှစ်အရသာ ဆီလုံတီးမှာ အဖြေရှာ။",
   },
   {
     image: mohinga,
     tag: "National Dish",
     title: "Mohinga",
-    subtitle: "Burma's beloved catfish noodle soup — warmth in every bowl.",
+    subtitle: "စားကြည့်ပါလား အဲ သောက်ကြည့်ပါလား မုန့်ဟင်းခါး။",
   },
   {
     image: shweyinaye,
     tag: "Chef's Special",
     title: "Shwe Yin Aye",
-    subtitle:
-      "Coconut milk dessert with jelly, sticky rice and colorful toppings",
+    subtitle: "ဒါကို ရွှေရင်အေးဆိုလို့ မင်းပုံလေးပြပြီး ငြင်းခဲ့ရတယ်။",
   },
   {
     image: sanwinmakin,
     tag: "Chef's Special",
     title: "Sanwin Makin",
-    subtitle: "Traditional semolina cake baked with coconut and butter",
+    subtitle: "ခံတွင်းရှင်းမဲ့ ဆနွင်းမကင်းလေး။",
+  },
+  {
+    image: palmjucie,
+    tag: "House Drinks",
+    title: "Palm Juice",
+    subtitle: "ညနေရောက်ရင်....ထန်းရည်ဆိုင်သွားမယ်။",
   },
 ];
 
@@ -99,7 +102,7 @@ export const MENU = {
     {
       id: 1,
       name: "Mohinga",
-      desc: "Catfish broth noodle soup with crispy fritters",
+      desc: "မုန့်ဟင်းခါးသောက်မယ် ပိုက်နဲ့။",
       price: 25000,
       image: mohinga,
       tags: ["popular", "musttry", "spicy"],
@@ -107,7 +110,7 @@ export const MENU = {
     {
       id: 2,
       name: "Ohn No Khao Swe",
-      desc: "Coconut milk noodle soup with tender chicken",
+      desc: "ကိုကိုးနဲ့ချက်တဲ့ ကိုကိုးနက်ခေါက်ဆွဲ။",
       price: 25000,
       image: coconutnoodle,
       tags: ["popular", "musttry", "spicy"],
@@ -115,7 +118,7 @@ export const MENU = {
     {
       id: 3,
       name: "Shan Noodles",
-      desc: "Flat rice noodles in mild tomato-pork broth",
+      desc: "ဒီခေါက်ဆွဲ ကောင်းလွန်းလို့စားတာလား။",
       price: 22000,
       image: shannoodle,
       tags: ["musttry", "spicy"],
@@ -123,7 +126,7 @@ export const MENU = {
     {
       id: 4,
       name: "Noodle Salad",
-      desc: "Refreshing noodle salad with lime and roasted peanuts",
+      desc: "လျှောက်တွဲမဲ့အစား ခေါက်ဆွဲစား။",
       price: 20000,
       image: noodlesalad,
       tags: ["veg", "spicy"],
@@ -131,7 +134,7 @@ export const MENU = {
     {
       id: 5,
       name: "Claypot Noodle",
-      desc: "Hot claypot noodles cooked with vegetables and spices",
+      desc: "မြေအိုးစားမယ့် နေတိုးလား။",
       price: 30000,
       image: claypotnoodle,
       tags: ["popular"],
@@ -140,7 +143,7 @@ export const MENU = {
     {
       id: 6,
       name: "Rakhine Mont Te",
-      desc: "Spicy Rakhine fish soup with rice noodles and fresh herbs",
+      desc: "ရုပ်တည်နဲ့ မုန့်တီသောက်မနေနဲ့။",
       price: 23000,
       image: rakhinemotte,
       tags: ["spicy", "musttry"],
@@ -148,7 +151,7 @@ export const MENU = {
     {
       id: 7,
       name: "Kyar Zan Hinn",
-      desc: "Glass noodle soup with mushrooms, herbs and tender chicken",
+      desc: "ကြာကြာမငြင်းသွားနဲ့ ကြာဇံဟင်းလေးဆွဲရအောင်လေ။",
       price: 21000,
       image: kyrzanhinn,
       tags: ["popular", "musttry", "spicy"],
@@ -156,7 +159,7 @@ export const MENU = {
     {
       id: 8,
       name: "Tofu Nway",
-      desc: "Warm silky tofu pudding with savory sauce and crispy toppings",
+      desc: "တိုဖူးမအေး",
       price: 20000,
       image: tofunway,
       tags: ["musttry"],
@@ -164,7 +167,7 @@ export const MENU = {
     {
       id: 9,
       name: "Rangoon Htamin Paung",
-      desc: "Steamed rice served with mixed vegetables and light curry sauce",
+      desc: "မန္တလေးထမင်းသုပ် မဟုတ်ပါ",
       price: 25000,
       image: rangoonhtaminpaung,
       tags: ["popular", "veg"],
@@ -172,7 +175,7 @@ export const MENU = {
     {
       id: 10,
       name: "Shan Fish Rice",
-      desc: "Flavorful Shan-style fish rice with garlic oil and herbs",
+      desc: "ငါးထမင်းနယ် ကြက်သားနဲ့။",
       price: 20000,
       image: shanfishrice,
       tags: ["popular"],
@@ -180,7 +183,7 @@ export const MENU = {
     {
       id: 11,
       name: "Tea Leaf Rice",
-      desc: "Fried rice mixed with fermented tea leaves and spicy toppings",
+      desc: "လကုန်ရက်စပါယ်ရှယ်",
       price: 12000,
       image: tealeafhtamin,
       tags: ["spicy"],
@@ -188,7 +191,7 @@ export const MENU = {
     {
       id: 12,
       name: "Tea Leaf Salad",
-      desc: "Myanmar tea leaf salad with crunchy beans, peanuts and sesame",
+      desc: "လက်ဖက်သုပ်ဆို နှစ်ချက်ခုတ်။",
       price: 35000,
       image: tealeafsalad,
       tags: ["veg", "spicy", "halal"],
@@ -196,7 +199,7 @@ export const MENU = {
     {
       id: 13,
       name: "Tofu Salad",
-      desc: "Fresh tofu salad tossed with herbs, garlic oil and peanuts",
+      desc: "မစဥ်းစားတတ်ဘူး။",
       price: 12000,
       image: tofusalad,
       tags: ["veg", "spicy", "halal"],
@@ -204,7 +207,7 @@ export const MENU = {
     {
       id: 14,
       name: "Samosa",
-      desc: "Crispy golden pastry filled with savory potatoes and spices",
+      desc: "စမူစာလို နားပူနားဆာ မလုပ်နဲ့",
       price: 10000,
       image: samosa,
       tags: ["veg", "popular", "halal"],
@@ -212,7 +215,7 @@ export const MENU = {
     {
       id: 15,
       name: "Burmese Tempura",
-      desc: "Assorted crispy Burmese fritters served with fresh vegetables and savory dipping sauce",
+      desc: "လမ်းဘေးနားက အကြော်ဆိုင်တဲမှာ မထိုင်ချင်ဘူး",
       price: 20000,
       image: burmesetempuras,
       tags: ["veg", "popular", "halal"],
@@ -222,7 +225,7 @@ export const MENU = {
     {
       id: 16,
       name: "Ceylon Tea",
-      desc: "Classic Myanmar milk tea with rich flavor and creamy texture",
+      desc: "ပြစ်ပြစ်နှစ်နှစ်အရသာ ဆီလုံတီးမှာ အဖြေရှာ။",
       price: 15000,
       image: ceylontea,
       tags: ["hot", "sweet", "musttry"],
@@ -230,7 +233,7 @@ export const MENU = {
     {
       id: 17,
       name: "Coffee",
-      desc: "Fresh brewed coffee with deep aroma and smooth taste",
+      desc: "ေကာ်ဖီခါးခါး ကြိုက်တဲ့ငါ။",
       price: 12000,
       image: coffee,
       tags: ["hot"],

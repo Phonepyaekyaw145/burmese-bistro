@@ -98,6 +98,7 @@ body {
   --muted: #666666;
   --card: #ffffff;
   --border: #dddddd;
+  --muted: #6b7280;
 }
 
 .dark {
@@ -106,4 +107,5 @@ body {
   --muted: #a1a1aa;
   --card: #18181b;
   --border: #27272a;
+  --muted: #a8a29e;
 }
