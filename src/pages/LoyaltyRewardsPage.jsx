@@ -1,7 +1,7 @@
 // LoyaltyRewardsPage.jsx
 
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 
 // ── Data ──────────────────────────────────────────────────────────────────
@@ -69,12 +69,12 @@ const HOW_IT_WORKS = [
   {
     step: "03",
     title: "Unlock Rewards",
-    desc: "Redeem points for discounts, free dishes, and exclusive experiences. No expiry on points as long as your account is active.",
+    desc: "Redeem points for discounts, free dishes, and exclusive experiences.",
   },
   {
     step: "04",
     title: "Rise Through Tiers",
-    desc: "Accumulate points to advance from Silver to Gold to Platinum — each level unlocking richer perks.",
+    desc: "Advance from Silver to Gold to Platinum and unlock richer rewards.",
   },
 ];
 
@@ -82,47 +82,43 @@ const BENEFITS = [
   {
     icon: "🎁",
     title: "Exclusive Discounts",
-    desc: "Members receive automatic discounts on every order — from 5% at Silver up to 15% at Platinum tier.",
+    desc: "Automatic savings on every order.",
   },
   {
     icon: "⭐",
     title: "Points on Every Visit",
-    desc: "Earn points each time you dine in, order takeaway, or book catering.",
+    desc: "Earn rewards every time you dine.",
   },
   {
     icon: "🍜",
     title: "Members-Only Dishes",
-    desc: "Gold and Platinum members get first access to seasonal specials and members-only menu items.",
+    desc: "Exclusive seasonal dishes for members.",
   },
   {
     icon: "🎉",
     title: "Birthday Rewards",
-    desc: "Receive a personalised birthday reward every year — from desserts to full meals.",
+    desc: "Celebrate your birthday with free treats.",
   },
   {
     icon: "📅",
     title: "Priority Reservations",
-    desc: "Gold and Platinum members can reserve tables ahead with priority seating.",
+    desc: "Book tables before everyone else.",
   },
   {
     icon: "🚚",
     title: "Free Delivery",
-    desc: "Platinum members enjoy complimentary delivery within 5 km.",
+    desc: "Complimentary delivery for Platinum members.",
   },
 ];
 
 const FAQS = [
   {
     q: "How do I join the loyalty programme?",
-    a: "Simply create a free account on our website or mobile app. Membership is completely free.",
-  },
-  {
-    q: "How are points calculated?",
-    a: "Silver earns 1 point per 1,000 MMK spent; Gold earns 2; Platinum earns 3.",
+    a: "Simply create a free account online or at the restaurant.",
   },
   {
     q: "Do points expire?",
-    a: "Points remain active as long as your account has activity within 12 months.",
+    a: "Points stay active as long as your account remains active.",
   },
   {
     q: "How do I move to a higher tier?",
@@ -130,7 +126,7 @@ const FAQS = [
   },
   {
     q: "Can I use discounts and redeem points together?",
-    a: "Yes — your member discount and point redemption can be combined.",
+    a: "Yes — discounts and rewards can both be applied.",
   },
 ];
 
@@ -138,7 +134,10 @@ const FAQS = [
 
 function FadeUp({ children, delay = 0, className = "" }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, {
+    once: true,
+    margin: "-60px",
+  });
 
   return (
     <motion.div
@@ -160,8 +159,8 @@ function FadeUp({ children, delay = 0, className = "" }) {
 function SectionLabel({ children }) {
   return (
     <div className="flex items-center gap-3 mb-3">
-      <span className="h-px w-8 bg-gold" />
-      <p className="text-[11px] tracking-[0.22em] uppercase text-gold font-body font-medium">
+      <span className="w-8 h-px bg-gold" />
+      <p className="text-[11px] tracking-[0.22em] uppercase text-gold font-medium">
         {children}
       </p>
     </div>
@@ -173,48 +172,49 @@ function TierCard({ tier, index }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 32 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
+      viewport={{ once: true }}
       transition={{
-        duration: 0.55,
+        duration: 0.5,
         delay: index * 0.1,
-        ease: [0.22, 1, 0.36, 1],
       }}
-      className={`relative flex flex-col rounded-3xl p-6 border-2 transition-all duration-300 bg-white dark:bg-stone-900 ${
+      className={`relative rounded-3xl border-2 p-6 bg-white dark:bg-stone-900 transition-all duration-300 ${
         tier.color
-      } ${tier.highlight ? "shadow-2xl shadow-gold/15" : "hover:shadow-lg"}`}
+      } ${tier.highlight ? "shadow-2xl shadow-gold/20" : "hover:shadow-lg"}`}
     >
       {tier.highlight && (
-        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-white text-[10px] font-semibold tracking-[0.18em] uppercase px-3 py-1 rounded-full">
-          Most Popular
-        </span>
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+          <span className="bg-gold text-white text-[10px] tracking-widest uppercase px-3 py-1 rounded-full">
+            Most Popular
+          </span>
+        </div>
       )}
 
       <div className="flex items-center gap-3 mb-5">
         <span className="text-[34px]">{tier.icon}</span>
 
         <div>
-          <h3 className="font-display text-[28px] font-semibold text-stone-900 dark:text-white">
+          <h3 className="font-display text-[28px] font-semibold text-stone-900 dark:text-stone-100">
             {tier.name}
           </h3>
 
           <span
-            className={`inline-block mt-1 text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-full ${tier.badge}`}
+            className={`inline-block mt-1 px-2 py-1 rounded-full text-[10px] font-semibold tracking-wide ${tier.badge}`}
           >
             {tier.maxPoints
-              ? `${tier.minPoints} – ${tier.maxPoints} pts`
+              ? `${tier.minPoints} - ${tier.maxPoints} pts`
               : `${tier.minPoints}+ pts`}
           </span>
         </div>
       </div>
 
-      <ul className="space-y-3 flex-1 mb-6">
+      <ul className="space-y-3 mb-6">
         {tier.perks.map((perk) => (
-          <li key={perk} className="flex gap-2.5">
+          <li key={perk} className="flex items-start gap-2">
             <span className="text-gold text-[13px] mt-0.5">✓</span>
 
-            <span className="text-[13px] leading-relaxed text-stone-600 dark:text-stone-400">
+            <span className="text-[13px] text-stone-600 dark:text-stone-400 leading-relaxed">
               {perk}
             </span>
           </li>
@@ -223,10 +223,10 @@ function TierCard({ tier, index }) {
 
       <button
         onClick={() => navigate("/signup")}
-        className={`w-full py-3 rounded-2xl text-[13px] font-medium tracking-wide transition-all duration-300 ${
+        className={`w-full py-3 rounded-xl text-[13px] font-medium transition-all duration-200 ${
           tier.highlight
             ? "bg-gold hover:bg-gold-dark text-white"
-            : "border border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:border-gold hover:text-gold"
+            : "border border-stone-200 dark:border-stone-700 hover:border-gold text-stone-700 dark:text-stone-300 hover:text-gold"
         }`}
       >
         {tier.name === "Silver" ? "Join Free" : `Reach ${tier.name}`}
@@ -242,9 +242,9 @@ function FaqItem({ item }) {
     <div className="border-b border-stone-200 dark:border-stone-800">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between py-4 text-left gap-4"
+        className="w-full flex items-center justify-between py-5 text-left"
       >
-        <span className="text-[14px] font-medium text-stone-800 dark:text-stone-200 hover:text-gold transition-colors">
+        <span className="text-[14px] font-medium text-stone-800 dark:text-stone-200">
           {item.q}
         </span>
 
@@ -256,15 +256,16 @@ function FaqItem({ item }) {
         </motion.span>
       </button>
 
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {open && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25 }}
             className="overflow-hidden"
           >
-            <p className="pb-4 text-[13px] leading-relaxed text-stone-500 dark:text-stone-400">
+            <p className="pb-5 text-[13px] leading-relaxed text-stone-500 dark:text-stone-400">
               {item.a}
             </p>
           </motion.div>
@@ -275,30 +276,34 @@ function FaqItem({ item }) {
 }
 
 function PointsProgress() {
+  const tiers = [
+    { name: "Silver", icon: "🥈", points: "0 pts" },
+    { name: "Gold", icon: "🥇", points: "500 pts" },
+    { name: "Platinum", icon: "💎", points: "1500 pts" },
+  ];
+
   return (
     <div className="rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 p-6">
-      <p className="text-[11px] tracking-[0.2em] uppercase text-gold font-medium mb-4">
+      <p className="text-[11px] tracking-[0.18em] uppercase text-gold font-medium mb-5">
         Tier Progression
       </p>
 
-      <div className="h-2 rounded-full bg-stone-100 dark:bg-stone-800 overflow-hidden">
-        <div className="h-full w-[33%] bg-gold rounded-full" />
+      <div className="h-2 rounded-full overflow-hidden bg-stone-100 dark:bg-stone-800">
+        <div className="h-full w-1/3 bg-gold rounded-full" />
       </div>
 
-      <div className="grid grid-cols-3 mt-5 text-center">
-        {[
-          { icon: "🥈", name: "Silver", points: "0 pts" },
-          { icon: "🥇", name: "Gold", points: "500 pts" },
-          { icon: "💎", name: "Platinum", points: "1500 pts" },
-        ].map((tier) => (
-          <div key={tier.name}>
-            <p className="text-[22px]">{tier.icon}</p>
+      <div className="flex justify-between mt-5">
+        {tiers.map((tier) => (
+          <div key={tier.name} className="flex flex-col items-center gap-1">
+            <span className="text-[20px]">{tier.icon}</span>
 
-            <p className="font-display text-[15px] font-semibold text-stone-900 dark:text-white">
+            <span className="font-display text-[14px] font-semibold text-stone-900 dark:text-stone-100">
               {tier.name}
-            </p>
+            </span>
 
-            <p className="text-[11px] text-stone-400">{tier.points}</p>
+            <span className="text-[11px] text-stone-400 dark:text-stone-500">
+              {tier.points}
+            </span>
           </div>
         ))}
       </div>
@@ -314,105 +319,107 @@ export default function LoyaltyRewardsPage() {
   return (
     <div className="flex flex-col flex-1 overflow-y-auto bg-stone-50 dark:bg-stone-950 font-body">
       {/* Hero */}
+
       <div className="relative w-full h-[260px] sm:h-[340px] md:h-[420px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80"
           alt="Loyalty Rewards"
-          className="w-full h-full object-cover brightness-[0.45]"
+          className="w-full h-full object-cover brightness-[0.42]"
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/20 to-transparent" />
 
         <div className="absolute inset-0 flex flex-col justify-end px-6 sm:px-10 md:px-14 pb-10">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.7,
-              ease: [0.22, 1, 0.36, 1],
-            }}
+            transition={{ duration: 0.7 }}
           >
-            <p className="text-[11px] tracking-[0.22em] uppercase text-gold font-medium mb-2">
-              Burmese Bistro · Member Programme
+            <p className="text-[11px] tracking-[0.22em] uppercase text-gold mb-2">
+              Burmese Bistro · Loyalty Programme
             </p>
 
-            <h1 className="font-display text-[44px] sm:text-[58px] md:text-[68px] font-semibold text-white leading-[1.02]">
+            <h1 className="font-display text-[42px] sm:text-[58px] md:text-[70px] text-white leading-[1.02] font-semibold">
               Loyalty <em className="italic text-gold-light">Rewards</em>
             </h1>
 
-            <p className="mt-3 text-[14px] text-white/70 max-w-[520px] leading-relaxed">
-              Earn points, unlock exclusive dining experiences, and enjoy
-              special benefits every time you visit.
+            <p className="mt-4 max-w-[520px] text-[14px] leading-relaxed text-white/70">
+              Earn points, unlock exclusive rewards, and enjoy premium benefits
+              every time you dine with Burmese Bistro.
             </p>
           </motion.div>
         </div>
       </div>
 
-      <div className="max-w-[950px] mx-auto w-full px-4 sm:px-6 md:px-9 py-12 space-y-20">
+      {/* Content */}
+
+      <div className="max-w-[1100px] mx-auto w-full px-4 sm:px-6 md:px-8 py-14 space-y-24">
         {/* Intro */}
+
         <FadeUp>
           <SectionLabel>About the Programme</SectionLabel>
 
-          <h2 className="font-display text-[32px] sm:text-[40px] font-semibold text-stone-900 dark:text-white mb-4">
+          <h2 className="font-display text-[32px] sm:text-[40px] font-semibold text-stone-900 dark:text-stone-100 mb-5">
             Dining that rewards you back.
           </h2>
 
-          <p className="text-[14px] leading-relaxed text-stone-500 dark:text-stone-400 max-w-[700px]">
-            Every visit earns you rewards. Join our loyalty programme for free
-            and unlock exclusive discounts, priority reservations, members-only
-            dishes, and more.
+          <p className="max-w-[700px] text-[14px] leading-relaxed text-stone-500 dark:text-stone-400">
+            Every visit earns points that unlock discounts, exclusive dishes,
+            priority reservations, birthday gifts, and premium experiences.
+            Membership is free forever.
           </p>
         </FadeUp>
 
         {/* Stats */}
+
         <FadeUp>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { value: "4,200+", label: "Active members" },
               { value: "1.2M", label: "Points redeemed" },
               { value: "8,500+", label: "Free dishes given" },
-              { value: "12%", label: "Average savings" },
+              { value: "12%", label: "Average member savings" },
             ].map((item) => (
               <div
                 key={item.label}
                 className="rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 p-5"
               >
-                <p className="font-display text-[30px] font-semibold text-stone-900 dark:text-white">
+                <h3 className="font-display text-[30px] font-semibold text-stone-900 dark:text-stone-100">
                   {item.value}
-                </p>
+                </h3>
 
-                <p className="text-[11px] text-stone-400 mt-1">{item.label}</p>
+                <p className="mt-1 text-[11px] text-stone-400 dark:text-stone-500">
+                  {item.label}
+                </p>
               </div>
             ))}
           </div>
         </FadeUp>
 
         {/* Benefits */}
+
         <div>
           <FadeUp>
             <SectionLabel>Benefits</SectionLabel>
 
-            <h2 className="font-display text-[32px] sm:text-[38px] font-semibold text-stone-900 dark:text-white mb-8">
-              Everything that comes with membership.
+            <h2 className="font-display text-[32px] sm:text-[38px] font-semibold text-stone-900 dark:text-stone-100 mb-8">
+              Everything included with membership.
             </h2>
           </FadeUp>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {BENEFITS.map((item, i) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{
-                  duration: 0.5,
-                  delay: i * 0.07,
-                }}
-                className="rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 p-5 hover:shadow-lg transition-all duration-300"
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 p-6 hover:shadow-lg hover:border-gold/50 transition-all"
               >
                 <span className="text-[30px]">{item.icon}</span>
 
-                <h3 className="mt-3 font-display text-[20px] font-semibold text-stone-900 dark:text-white">
+                <h3 className="mt-4 font-display text-[20px] font-semibold text-stone-900 dark:text-stone-100">
                   {item.title}
                 </h3>
 
@@ -425,20 +432,21 @@ export default function LoyaltyRewardsPage() {
         </div>
 
         {/* Tier Cards */}
+
         <div>
           <FadeUp>
             <SectionLabel>Membership Tiers</SectionLabel>
 
-            <h2 className="font-display text-[32px] sm:text-[38px] font-semibold text-stone-900 dark:text-white mb-2">
+            <h2 className="font-display text-[32px] sm:text-[38px] font-semibold text-stone-900 dark:text-stone-100 mb-3">
               Three tiers, richer rewards.
             </h2>
 
             <p className="text-[13px] text-stone-500 dark:text-stone-400 mb-8">
-              Progress automatically as you collect points.
+              Unlock better perks as your lifetime points increase.
             </p>
           </FadeUp>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {TIERS.map((tier, i) => (
               <TierCard key={tier.name} tier={tier} index={i} />
             ))}
@@ -446,38 +454,37 @@ export default function LoyaltyRewardsPage() {
         </div>
 
         {/* Progress */}
+
         <FadeUp>
           <PointsProgress />
         </FadeUp>
 
-        {/* How it works */}
+        {/* How It Works */}
+
         <div>
           <FadeUp>
             <SectionLabel>How It Works</SectionLabel>
 
-            <h2 className="font-display text-[32px] sm:text-[38px] font-semibold text-stone-900 dark:text-white mb-8">
+            <h2 className="font-display text-[32px] sm:text-[38px] font-semibold text-stone-900 dark:text-stone-100 mb-8">
               Simple from the first visit.
             </h2>
           </FadeUp>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {HOW_IT_WORKS.map((step, i) => (
               <motion.div
                 key={step.step}
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{
-                  duration: 0.5,
-                  delay: i * 0.08,
-                }}
-                className="rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 p-5"
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="relative rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 p-6"
               >
-                <span className="font-display text-[42px] text-gold/20 font-semibold">
+                <span className="font-display text-[48px] text-gold/20 font-semibold">
                   {step.step}
                 </span>
 
-                <h3 className="mt-2 font-display text-[19px] font-semibold text-stone-900 dark:text-white">
+                <h3 className="mt-3 font-display text-[20px] font-semibold text-stone-900 dark:text-stone-100">
                   {step.title}
                 </h3>
 
@@ -490,11 +497,12 @@ export default function LoyaltyRewardsPage() {
         </div>
 
         {/* FAQ */}
+
         <div>
           <FadeUp>
             <SectionLabel>Questions</SectionLabel>
 
-            <h2 className="font-display text-[32px] sm:text-[38px] font-semibold text-stone-900 dark:text-white mb-6">
+            <h2 className="font-display text-[32px] sm:text-[38px] font-semibold text-stone-900 dark:text-stone-100 mb-6">
               Frequently Asked
             </h2>
           </FadeUp>
@@ -507,35 +515,36 @@ export default function LoyaltyRewardsPage() {
         </div>
 
         {/* CTA */}
+
         <FadeUp>
-          <div className="relative rounded-3xl overflow-hidden">
+          <div className="relative overflow-hidden rounded-3xl">
             <img
               src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1200&q=80"
-              alt="Join Loyalty Programme"
-              className="w-full h-[240px] sm:h-[280px] object-cover brightness-[0.45]"
+              alt="Join loyalty"
+              className="w-full h-[240px] sm:h-[300px] object-cover brightness-[0.45]"
             />
 
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-              <h3 className="font-display text-[32px] sm:text-[40px] italic font-semibold text-white mb-3">
+              <h3 className="font-display italic text-[32px] sm:text-[42px] text-white font-semibold mb-4">
                 Ready to start earning?
               </h3>
 
-              <p className="text-[13px] text-white/70 max-w-[420px] mb-6">
-                Join thousands of members already enjoying rewards and exclusive
-                dining benefits at Burmese Bistro.
+              <p className="max-w-[480px] text-[13px] leading-relaxed text-white/70 mb-7">
+                Join thousands of Burmese Bistro members already enjoying
+                rewards, discounts, and exclusive dining experiences.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={() => navigate("/signup")}
-                  className="px-6 py-3 bg-gold hover:bg-gold-dark text-white rounded-2xl text-[13px] font-medium transition-all duration-300"
+                  className="px-6 py-3 rounded-xl bg-gold hover:bg-gold-dark text-white text-[13px] font-medium transition-colors"
                 >
                   Join for Free
                 </button>
 
                 <button
                   onClick={() => navigate("/menu")}
-                  className="px-6 py-3 bg-white/15 hover:bg-white/25 border border-white/30 backdrop-blur-sm text-white rounded-2xl text-[13px] font-medium transition-all duration-300"
+                  className="px-6 py-3 rounded-xl border border-white/30 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white text-[13px] font-medium transition-colors"
                 >
                   Browse Menu
                 </button>
