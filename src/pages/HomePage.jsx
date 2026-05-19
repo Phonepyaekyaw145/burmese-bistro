@@ -2,7 +2,10 @@ import { useRef } from "react";
 import { useNavigate } from "react-router";
 import { motion, useInView } from "framer-motion";
 import Slideshow from "../components/home/Slideshow";
-
+import mohinga from "../assets/images/mohinga.jpg";
+import tealeafsalad from "../assets/images/tealeafs-salad.jpg";
+import shannoodle from "../assets/images/shannoodle.jpg";
+import coconutnoodle from "../assets/images/coconutnoodle.jpg";
 // ── Data ────────────────────────────────────────────────────────────────
 // Replace image URLs with your own from /public/images/
 const SPECIALS = [
@@ -12,26 +15,23 @@ const SPECIALS = [
     name: "Mohinga",
     subtitle: "Fish Noodle Soup",
     desc: "Grandmother Aye's original recipe — slow-simmered catfish broth with lemongrass, rice noodles, and crispy fritters.",
-    price: "8,500",
+    price: "25,000",
     currency: "MMK",
     badge: "Bestseller",
-    image:
-      "https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80",
+    image: mohinga,
     spice: 2,
-    time: "15 min",
+    time: "10 min",
   },
   {
     id: 2,
-    tag: "Today Only",
-    name: "Lahpet Thoke",
+    tag: "Traditional",
     subtitle: "Fermented Tea Leaf Salad",
     desc: "A bold mix of fermented tea leaves, crunchy nuts, sesame, tomatoes, and lime — Myanmar's most iconic salad.",
-    price: "6,000",
+    price: "35,000",
     currency: "MMK",
-    badge: "Seasonal",
-    image:
-      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80",
-    spice: 1,
+    badge: "Must Try",
+    image: tealeafsalad,
+    spice: 2,
     time: "10 min",
   },
   {
@@ -40,13 +40,12 @@ const SPECIALS = [
     name: "Shan Khao Swe",
     subtitle: "Shan-Style Noodles",
     desc: "Flat rice noodles in a light chicken broth with pickled mustard greens, peanuts, and chilli oil drizzle.",
-    price: "7,500",
+    price: "22,000",
     currency: "MMK",
     badge: "New",
-    image:
-      "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80",
-    spice: 3,
-    time: "20 min",
+    image: shannoodle,
+    spice: 1,
+    time: "10 min",
   },
   {
     id: 4,
@@ -54,20 +53,19 @@ const SPECIALS = [
     name: "Ohn No Khao Swe",
     subtitle: "Coconut Chicken Noodle",
     desc: "Rich coconut milk soup with egg noodles, tender chicken, crispy onions, and a squeeze of fresh lime.",
-    price: "9,000",
+    price: "25,000",
     currency: "MMK",
     badge: "Popular",
-    image:
-      "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80",
-    spice: 1,
-    time: "18 min",
+    image: coconutnoodle,
+    spice: 2,
+    time: "10 min",
   },
 ];
 
 const BADGE_COLORS = {
   Bestseller:
     "bg-amber-100 text-amber-800 dark:bg-amber-900/50 dark:text-amber-300",
-  Seasonal:
+  "Must Try":
     "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300",
   New: "bg-sky-100 text-sky-800 dark:bg-sky-900/50 dark:text-sky-300",
   Popular: "bg-rose-100 text-rose-800 dark:bg-rose-900/50 dark:text-rose-300",
