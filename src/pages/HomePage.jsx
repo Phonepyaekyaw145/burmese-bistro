@@ -218,13 +218,25 @@ function TodaysSpecials() {
         >
           {/* Eyebrow */}
           <div className="flex items-center gap-3 mb-2">
-            <span className="h-px w-8 bg-gold" />
-            <p className="text-[11px] tracking-[0.22em] uppercase text-gold font-body font-medium">
+            <span
+              className="h-px w-8 transition-colors duration-300"
+              style={{ background: "var(--br)" }}
+            />
+            <p
+              className="text-[11px] tracking-[0.22em] uppercase font-body font-medium transition-colors duration-300"
+              style={{ color: "var(--br)" }}
+            >
               Fresh Today
             </p>
           </div>
-          <h2 className="font-display text-[36px] sm:text-[44px] md:text-[52px] font-semibold text-stone-900 dark:text-stone-100 leading-[1.05]">
-            Today's <em className="italic text-gold">Specials</em>
+          <h2
+            className="font-display text-[36px] sm:text-[44px] md:text-[52px] font-semibold leading-[1.05] transition-colors duration-300"
+            style={{ color: "var(--tx)" }}
+          >
+            Today's
+            <em className="italic" style={{ color: "var(--br)" }}>
+              Specials
+            </em>
           </h2>
         </motion.div>
 
