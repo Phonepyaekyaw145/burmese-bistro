@@ -42,6 +42,21 @@ const TAG_STYLES = {
     color: "#5f8f00",
     label: "Sour",
   },
+  halal: {
+    background: "#e8f7ec",
+    color: "#1f7a3d",
+    label: "Halal",
+  },
+  musttry: {
+    background: "#fff4d6",
+    color: "#b26a00",
+    label: "Must Try",
+  },
+  alcohol: {
+    background: "#f3e8ff",
+    color: "#6b21a8",
+    label: "Alcohol",
+  },
 };
 
 export default function MenuGrid({ items }) {

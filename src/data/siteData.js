@@ -102,7 +102,7 @@ export const MENU = {
       desc: "Catfish broth noodle soup with crispy fritters",
       price: 25000,
       image: mohinga,
-      tags: ["popular"],
+      tags: ["popular", "musttry", "spicy"],
     },
     {
       id: 2,
@@ -110,7 +110,7 @@ export const MENU = {
       desc: "Coconut milk noodle soup with tender chicken",
       price: 25000,
       image: coconutnoodle,
-      tags: ["popular"],
+      tags: ["popular", "musttry", "spicy"],
     },
     {
       id: 3,
@@ -118,7 +118,7 @@ export const MENU = {
       desc: "Flat rice noodles in mild tomato-pork broth",
       price: 22000,
       image: shannoodle,
-      tags: ["spicy"],
+      tags: ["musttry", "spicy"],
     },
     {
       id: 4,
@@ -126,7 +126,7 @@ export const MENU = {
       desc: "Refreshing noodle salad with lime and roasted peanuts",
       price: 20000,
       image: noodlesalad,
-      tags: ["spicy"],
+      tags: ["veg", "spicy"],
     },
     {
       id: 5,
@@ -143,7 +143,7 @@ export const MENU = {
       desc: "Spicy Rakhine fish soup with rice noodles and fresh herbs",
       price: 230000,
       image: rakhinemotte,
-      tags: ["spicy"],
+      tags: ["spicy", "musttry"],
     },
     {
       id: 7,
@@ -151,7 +151,7 @@ export const MENU = {
       desc: "Glass noodle soup with mushrooms, herbs and tender chicken",
       price: 21000,
       image: kyrzanhinn,
-      tags: ["popular"],
+      tags: ["popular", "musttry", "spicy"],
     },
     {
       id: 8,
@@ -159,7 +159,7 @@ export const MENU = {
       desc: "Warm silky tofu pudding with savory sauce and crispy toppings",
       price: 20000,
       image: tofunway,
-      tags: ["veg"],
+      tags: ["musttry"],
     },
     {
       id: 9,
@@ -191,7 +191,7 @@ export const MENU = {
       desc: "Myanmar tea leaf salad with crunchy beans, peanuts and sesame",
       price: 35000,
       image: tealeafsalad,
-      tags: ["veg", "spicy"],
+      tags: ["veg", "spicy", "halal"],
     },
     {
       id: 13,
@@ -199,7 +199,7 @@ export const MENU = {
       desc: "Fresh tofu salad tossed with herbs, garlic oil and peanuts",
       price: 12000,
       image: tofusalad,
-      tags: ["veg", "spicy"],
+      tags: ["veg", "spicy", "halal"],
     },
     {
       id: 14,
@@ -207,7 +207,7 @@ export const MENU = {
       desc: "Crispy golden pastry filled with savory potatoes and spices",
       price: 10000,
       image: samosa,
-      tags: ["veg", "popular"],
+      tags: ["veg", "popular", "halal"],
     },
     {
       id: 15,
@@ -215,7 +215,7 @@ export const MENU = {
       desc: "Assorted crispy Burmese fritters served with fresh vegetables and savory dipping sauce",
       price: 20000,
       image: burmesetempuras,
-      tags: ["veg"],
+      tags: ["veg", "popular", "halal"],
     },
   ],
   drinks: [
@@ -225,7 +225,7 @@ export const MENU = {
       desc: "Classic Myanmar milk tea with rich flavor and creamy texture",
       price: 15000,
       image: ceylontea,
-      tags: ["hot", "sweet"],
+      tags: ["hot", "sweet", "musttry"],
     },
     {
       id: 17,
@@ -241,7 +241,7 @@ export const MENU = {
       desc: "Fresh creamy milk served with hot or cold",
       price: 10000,
       image: milk,
-      tags: ["popular"],
+      tags: ["sweet", "hot", "cold"],
     },
     {
       id: 19,
@@ -249,7 +249,7 @@ export const MENU = {
       desc: "Light and healthy green tea with natural fresh aroma",
       price: 15000,
       image: greentea,
-      tags: ["popular"],
+      tags: ["hot"],
     },
     {
       id: 20,
@@ -257,7 +257,7 @@ export const MENU = {
       desc: "Sweet dessert drink with jelly, milk and ice cream toppings",
       price: 18000,
       image: falooda,
-      tags: ["popular"],
+      tags: ["popular", "musttry", "sweet", "cold"],
     },
     {
       id: 21,
@@ -265,7 +265,7 @@ export const MENU = {
       desc: "Freshly squeezed sugarcane juice served with ice",
       price: 10000,
       image: sugarcane,
-      tags: ["popular"],
+      tags: ["sweet", "cold"],
     },
     {
       id: 22,
@@ -273,7 +273,7 @@ export const MENU = {
       desc: "Sweet and tangy tamarind drink with refreshing flavor",
       price: 8000,
       image: tamarindjuice,
-      tags: ["popular"],
+      tags: ["sour", "cold"],
     },
     {
       id: 23,
@@ -281,7 +281,7 @@ export const MENU = {
       desc: "Refreshing grass jelly drink with sweet syrup and ice",
       price: 8000,
       image: grassjellyjuice,
-      tags: ["popular"],
+      tags: ["sweet", "sour", "cold"],
     },
     {
       id: 24,
@@ -289,7 +289,7 @@ export const MENU = {
       desc: "Traditional palm juice with natural sweet tropical taste",
       price: 10000,
       image: palmjucie,
-      tags: ["popular"],
+      tags: ["sweet", "cold", "alcohol"],
     },
     {
       id: 25,
@@ -297,7 +297,7 @@ export const MENU = {
       desc: "Traditional sweet fermented sticky rice served chilled",
       price: 15000,
       image: fermentedglutinousrice,
-      tags: ["popular"],
+      tags: ["sweet", "cold", "alcohol"],
     },
   ],
   desserts: [
@@ -307,7 +307,7 @@ export const MENU = {
       desc: "Savory crispy pancake served with dipping sauce and fresh toppings",
       price: 20000,
       image: burmesepancake,
-      tags: ["popular"],
+      tags: ["popular", "musttry"],
     },
 
     {
@@ -316,7 +316,7 @@ export const MENU = {
       desc: "Traditional sticky rice delicacy mixed with coconut, peanuts and sesame",
       price: 15000,
       image: htamane,
-      tags: ["traditional"],
+      tags: ["musttry"],
     },
 
     {
@@ -325,7 +325,7 @@ export const MENU = {
       desc: "Sweet semolina cake topped with roasted nuts and sesame",
       price: 30000,
       image: htoemont,
-      tags: ["sweet"],
+      tags: ["sweet", "popular", "musttry"],
     },
 
     {
@@ -334,7 +334,7 @@ export const MENU = {
       desc: "Colorful traditional jelly dessert served chilled with coconut flavor",
       price: 20000,
       image: kyaukkywe,
-      tags: ["cold"],
+      tags: ["sweet", "cold"],
     },
 
     {
@@ -343,7 +343,7 @@ export const MENU = {
       desc: "Sweet coconut milk dessert with sticky rice balls and jelly",
       price: 15000,
       image: montlatsaung,
-      tags: ["popular"],
+      tags: ["sweet", "cold", "musttry"],
     },
 
     {
@@ -352,7 +352,7 @@ export const MENU = {
       desc: "Deep fried sweet Myanmar donuts served with sweet dipping sauce",
       price: 12000,
       image: montlekauk,
-      tags: ["snack"],
+      tags: ["popular", "sweet"],
     },
 
     {
@@ -361,7 +361,7 @@ export const MENU = {
       desc: "Traditional Myanmar snack filled with quail egg and savory toppings",
       price: 15000,
       image: montlinmaya,
-      tags: ["popular"],
+      tags: ["popular", "musttry"],
     },
 
     {
@@ -370,7 +370,7 @@ export const MENU = {
       desc: "Sweet glutinous rice balls filled with jaggery and coconut flakes",
       price: 15000,
       image: montloneyaypaw,
-      tags: ["traditional"],
+      tags: ["popular", "sweet", "musttry"],
     },
 
     {
@@ -388,7 +388,7 @@ export const MENU = {
       desc: "Sweet coconut dessert with chewy sago pearls and shredded coconut",
       price: 12000,
       image: sagopearls,
-      tags: ["cold"],
+      tags: ["sweet", "cold"],
     },
 
     {
@@ -397,7 +397,7 @@ export const MENU = {
       desc: "Traditional semolina cake baked with coconut and butter",
       price: 25000,
       image: sanwinmakin,
-      tags: ["popular"],
+      tags: ["popular", "musttry", "sweet"],
     },
 
     {
@@ -406,7 +406,7 @@ export const MENU = {
       desc: "Coconut milk dessert with jelly, sticky rice and colorful toppings",
       price: 18000,
       image: shweyinaye,
-      tags: ["cold"],
+      tags: ["popular", "sweet", "cold"],
     },
 
     {
@@ -415,7 +415,7 @@ export const MENU = {
       desc: "Sweet sticky rice rolls served with coconut cream and black beans",
       price: 20000,
       image: stickyrice,
-      tags: ["sweet"],
+      tags: ["musttry"],
     },
   ],
 };
