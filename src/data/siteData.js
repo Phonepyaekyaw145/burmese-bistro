@@ -141,7 +141,7 @@ export const MENU = {
       id: 6,
       name: "Rakhine Mont Te",
       desc: "Spicy Rakhine fish soup with rice noodles and fresh herbs",
-      price: 230000,
+      price: 23000,
       image: rakhinemotte,
       tags: ["spicy", "musttry"],
     },
