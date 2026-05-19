@@ -1,19 +1,5 @@
-// HomePage.jsx
-// Stack: React + Vite, Tailwind CSS, shadcn/ui, React Router
-//
-// ── Setup ──────────────────────────────────────────────────────────────
-// 1. Install framer-motion:  npm install framer-motion
-//
-// 2. Add to index.html <head>:
-//    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-//
-// 3. tailwind.config.js extend:
-//    colors: { gold: { DEFAULT:"#c8922a", light:"#e8c98a", dark:"#9a6e1c" } }
-//    fontFamily: { display:['"Cormorant Garamond"','serif'], body:['"DM Sans"','sans-serif'] }
-// ───────────────────────────────────────────────────────────────────────
-
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { motion, useInView } from "framer-motion";
 import Slideshow from "../components/home/Slideshow";
 
