@@ -263,8 +263,7 @@ function WhyUsStrip() {
   return (
     <section
       ref={ref}
-      className="relative py-12 md:py-16 overflow-hidden"
-      style={{ background: "var(--bg-secondary, #faf7f2)" }}
+      className="relative py-12 md:py-16 overflow-hidden bg-stone-50 dark:bg-stone-900"
     >
       {/* Decorative line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
