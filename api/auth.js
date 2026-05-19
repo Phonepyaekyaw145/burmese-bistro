@@ -2,13 +2,10 @@ import { MongoClient } from "mongodb";
 
 const uri = process.env.MONGODB_URI;
 
-if (!uri) {
-  throw new Error("MONGODB_URI is missing");
-}
-
-const client = new MongoClient(uri);
-
 export default async function handler(req, res) {
+  console.log("AUTH API CALLED");
+  console.log("MONGODB URI EXISTS:", !!uri);
+
   if (req.method !== "POST") {
     return res.status(405).json({
       success: false,
@@ -17,7 +14,15 @@ export default async function handler(req, res) {
   }
 
   try {
+    if (!uri) {
+      throw new Error("MONGODB_URI missing");
+    }
+
+    const client = new MongoClient(uri);
+
     await client.connect();
+
+    console.log("CONNECTED TO MONGODB");
 
     const db = client.db("qr-system");
 
@@ -28,12 +33,15 @@ export default async function handler(req, res) {
       createdAt: new Date(),
     });
 
+    await client.close();
+
     return res.status(200).json({
       success: true,
       guestId: result.insertedId,
     });
   } catch (err) {
-    console.error("AUTH API ERROR:", err);
+    console.error("AUTH ERROR:");
+    console.error(err);
 
     return res.status(500).json({
       success: false,
