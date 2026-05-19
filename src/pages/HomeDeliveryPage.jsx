@@ -198,7 +198,7 @@ export default function HomeDeliveryPage() {
       {/* Hero */}
       <div className="relative w-full h-[240px] sm:h-[300px] md:h-[380px] overflow-hidden">
         <img
-          src={mohinga}
+          src="https://images.unsplash.com/photo-1526367790999-0150786686a2?w=1400&q=80"
           alt="Food delivery"
           className="w-full h-full object-cover brightness-[0.5]"
         />
