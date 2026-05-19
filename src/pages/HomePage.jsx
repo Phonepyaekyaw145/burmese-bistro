@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { motion, useInView } from "framer-motion";
 import Slideshow from "../components/home/Slideshow";
 import mohinga from "../assets/images/mohinga.jpg";
-import tealeafsalad from "../assets/images/tealeafs-salad.jpg";
+import tealeafsalad from "../assets/images/tealeafsalad.jpg";
 import shannoodle from "../assets/images/shannoodle.jpg";
 import coconutnoodle from "../assets/images/coconutnoodle.jpg";
 // ── Data ────────────────────────────────────────────────────────────────
