@@ -3,14 +3,21 @@
 @import "tailwindcss";
 
 :root {
+  /* Brand */
   --br: #c0392b;
   --brd: #962d22;
+
+  /* Theme */
   --bg: #faf7f2;
   --bg2: #f2ece0;
-  --cd: #ffffff;
-  --tx: #1c1916;
-  --mt: #7a6f62;
-  --bo: #e5dbc8;
+  --card: #ffffff;
+
+  --text: #1c1916;
+  --muted: #7a6f62;
+
+  --border: #e5dbc8;
+
+  /* Fonts */
   --ff: "Playfair Display", serif;
   --fb: "DM Sans", sans-serif;
 }
@@ -18,60 +25,75 @@
 .dark {
   --bg: #131110;
   --bg2: #1d1a16;
-  --cd: #241f19;
-  --tx: #f0ebe2;
-  --mt: #9a8f7f;
-  --bo: #2e2820;
+  --card: #241f19;
+
+  --text: #f0ebe2;
+  --muted: #9a8f7f;
+
+  --border: #2e2820;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
 body {
   font-family: var(--fb);
   background: var(--bg);
-  color: var(--tx);
+  color: var(--text);
   transition:
-    background 0.3s,
-    color 0.3s;
-  margin: 0;
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 5px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: var(--bo);
+  background: var(--border);
   border-radius: 4px;
 }
 
-/* Make shadcn Carousel fill its parent height */
+/* Carousel height */
 [data-slot="carousel"] {
   height: 100%;
 }
+
 [data-slot="carousel-content"] {
   height: 100%;
 }
+
 [data-slot="carousel-item"] {
   height: 100%;
 }
 
-/* Slide transition */
+/* Slide animation */
 .slide-enter {
   opacity: 0;
 }
+
 .slide-enter-active {
   opacity: 1;
   transition: opacity 1s;
 }
+
 .slide-exit {
   opacity: 1;
 }
+
 .slide-exit-active {
   opacity: 0;
   transition: opacity 1s;

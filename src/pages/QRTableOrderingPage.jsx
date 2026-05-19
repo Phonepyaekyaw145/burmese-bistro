@@ -97,9 +97,18 @@ function SectionLabel({ children }) {
 
 export default function QRTableOrderingPage() {
   const navigate = useNavigate();
+  const guest = JSON.parse(sessionStorage.getItem("guest") || "{}");
 
+  const tableName = guest.table || "C07";
   return (
-    <div className="flex flex-col flex-1 overflow-y-auto bg-stone-50 dark:bg-stone-950 font-body">
+    <div
+      className="flex flex-col flex-1 overflow-y-auto font-body transition-colors duration-300"
+      style={{
+        background: "var(--bg)",
+        color: "var(--text)",
+      }}
+    >
+      {" "}
       {/* ── Hero Banner ── */}
       <div className="relative w-full h-[200px] sm:h-[260px] md:h-[320px] overflow-hidden bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900">
         {/* Decorative grid pattern */}
@@ -134,7 +143,6 @@ export default function QRTableOrderingPage() {
           </motion.div>
         </div>
       </div>
-
       <div className="max-w-[900px] mx-auto w-full px-4 sm:px-6 md:px-9 py-12 space-y-20">
         {/* ── QR Code hero section ── */}
         <FadeUp>
@@ -143,7 +151,8 @@ export default function QRTableOrderingPage() {
             <div className="flex justify-center md:justify-start">
               <motion.div
                 whileHover={{ scale: 1.03, transition: { duration: 0.25 } }}
-                className="relative bg-white dark:bg-stone-900 rounded-3xl p-6 shadow-xl border border-stone-200 dark:border-stone-800 w-fit"
+                className="relative rounded-3xl p-6 shadow-xl border border-stone-200 dark:border-stone-800 w-fit"
+                style={{ background: "var(--card)" }}
               >
                 {/* Pulsing ring */}
                 <motion.div
@@ -170,11 +179,14 @@ export default function QRTableOrderingPage() {
 
                 {/* Table number badge */}
                 <div className="mt-4 text-center">
-                  <p className="text-[10px] tracking-[0.18em] uppercase text-stone-400 dark:text-stone-500 font-body mb-1">
+                  <p
+                    className="font-display text-[26px] font-semibold leading-none"
+                    style={{ color: "var(--text)" }}
+                  >
                     Table
                   </p>
                   <p className="font-display text-[26px] font-semibold text-stone-900 dark:text-stone-100 leading-none">
-                    {BRAND.tableNumber}
+                    {tableName}
                   </p>
                 </div>
               </motion.div>
@@ -183,11 +195,17 @@ export default function QRTableOrderingPage() {
             {/* Right text */}
             <div>
               <SectionLabel>How to Order</SectionLabel>
-              <h2 className="font-display text-[28px] sm:text-[34px] font-semibold text-stone-900 dark:text-stone-100 leading-tight mb-3">
+              <h2
+                className="font-display text-[28px] sm:text-[34px] font-semibold leading-tight mb-3"
+                style={{ color: "var(--text)" }}
+              >
                 Your table, your menu,{" "}
                 <em className="italic text-gold">your pace.</em>
               </h2>
-              <p className="text-[14px] leading-relaxed text-stone-500 dark:text-stone-400 font-body mb-5">
+              <p
+                className="text-[14px] leading-relaxed font-body mb-5"
+                style={{ color: "var(--muted)" }}
+              >
                 Point your phone camera at the QR code above — no app download,
                 no account needed. You'll be browsing our full menu in seconds.
                 Add what you like, confirm your order, and we'll bring it
@@ -215,7 +233,10 @@ export default function QRTableOrderingPage() {
         <div>
           <FadeUp>
             <SectionLabel>Features</SectionLabel>
-            <h2 className="font-display text-[30px] sm:text-[36px] font-semibold text-stone-900 dark:text-stone-100 mb-8">
+            <h2
+              className="font-display text-[30px] sm:text-[36px] font-semibold mb-8"
+              style={{ color: "var(--text)" }}
+            >
               Ordering made effortless.
             </h2>
           </FadeUp>
@@ -232,15 +253,22 @@ export default function QRTableOrderingPage() {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className="group flex flex-col gap-3 p-5 rounded-2xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 hover:border-gold/60 hover:shadow-lg transition-all duration-300"
+                className="group flex flex-col gap-3 p-5 rounded-2xl border border-stone-200 dark:border-stone-800 hover:border-gold/60 hover:shadow-lg transition-all duration-300"
+                style={{ background: "var(--card)" }}
               >
                 {/* Gold top accent */}
                 <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-gold/0 via-gold to-gold/0 rounded-full transition-all duration-500 -mt-5 -mx-5 mb-3 self-stretch" />
                 <span className="text-[28px]">{f.icon}</span>
-                <h3 className="font-display text-[18px] font-semibold text-stone-900 dark:text-stone-100 leading-tight">
+                <h3
+                  className="font-display text-[18px] font-semibold leading-tight"
+                  style={{ color: "var(--text)" }}
+                >
                   {f.title}
                 </h3>
-                <p className="text-[13px] leading-relaxed text-stone-500 dark:text-stone-400 font-body">
+                <p
+                  className="text-[13px] leading-relaxed font-body"
+                  style={{ color: "var(--muted)" }}
+                >
                   {f.desc}
                 </p>
               </motion.div>
@@ -252,7 +280,10 @@ export default function QRTableOrderingPage() {
         <div>
           <FadeUp>
             <SectionLabel>Step by Step</SectionLabel>
-            <h2 className="font-display text-[30px] sm:text-[36px] font-semibold text-stone-900 dark:text-stone-100 mb-8">
+            <h2
+              className="font-display text-[30px] sm:text-[36px] font-semibold mb-8"
+              style={{ color: "var(--text)" }}
+            >
               Ready in four simple steps.
             </h2>
           </FadeUp>
@@ -268,15 +299,22 @@ export default function QRTableOrderingPage() {
                   delay: i * 0.1,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="relative flex flex-col gap-3 p-5 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800"
+                className="relative flex flex-col gap-3 p-5 rounded-2xl border border-stone-200 dark:border-stone-800"
+                style={{ background: "var(--card)" }}
               >
                 <span className="font-display text-[44px] font-semibold text-gold/20 leading-none select-none">
                   {s.step}
                 </span>
-                <h3 className="font-display text-[17px] font-semibold text-stone-900 dark:text-stone-100">
+                <h3
+                  className="font-display text-[17px] font-semibold"
+                  style={{ color: "var(--text)" }}
+                >
                   {s.title}
                 </h3>
-                <p className="text-[13px] leading-relaxed text-stone-500 dark:text-stone-400 font-body">
+                <p
+                  className="text-[13px] leading-relaxed font-body"
+                  style={{ color: "var(--muted)" }}
+                >
                   {s.desc}
                 </p>
                 {i < STEPS.length - 1 && (
@@ -315,14 +353,21 @@ export default function QRTableOrderingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-30px" }}
                 transition={{ duration: 0.45, delay: i * 0.08 }}
-                className="flex items-start gap-4 p-5 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800"
+                className="flex items-start gap-4 p-5 rounded-2xl border border-stone-200 dark:border-stone-800"
+                style={{ background: "var(--card)" }}
               >
                 <span className="text-[26px] flex-shrink-0">{item.icon}</span>
                 <div>
-                  <p className="text-[13px] font-semibold text-stone-800 dark:text-stone-200 font-body mb-1">
+                  <p
+                    className="text-[13px] font-semibold font-body mb-1"
+                    style={{ color: "var(--text)" }}
+                  >
                     {item.title}
                   </p>
-                  <p className="text-[12px] leading-relaxed text-stone-500 dark:text-stone-400 font-body">
+                  <p
+                    className="text-[12px] leading-relaxed font-body"
+                    style={{ color: "var(--muted)" }}
+                  >
                     {item.desc}
                   </p>
                 </div>
