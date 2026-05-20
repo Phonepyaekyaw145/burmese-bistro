@@ -241,7 +241,7 @@ export const MENU = {
     {
       id: 18,
       name: "Milk",
-      desc: "Fresh creamy milk served with hot or cold",
+      desc: "Homelander's favorite drink. Creamy and sweet, served hot or cold.",
       price: 10000,
       image: milk,
       tags: ["sweet", "hot", "cold"],
